@@ -6,8 +6,8 @@
 /plugin/;
 
 #include "overlay/tegra234-soc-overlay.dtsi"
-#include "tegra234-p3737-0000-overlay.dtsi"
-#include "tegra234-p3701-0000-overlay.dtsi"
+#include "tegra234-p3737-0000.dtsi"
+#include "tegra234-p3701-0000.dtsi"
 #include "overlay/tegra234-audio-dai-links-overlay.dtsi"
 #include "tegra234-dcb-p3737-0000-p3701-0000.dtsi"
 
