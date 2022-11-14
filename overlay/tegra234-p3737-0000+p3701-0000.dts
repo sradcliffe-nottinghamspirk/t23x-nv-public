@@ -271,4 +271,38 @@
 			cpu-idle-states = <&C7>;
 		};
 	};
+
+	fragment-t234-p3737-p3701@23 {
+		target-path = "/bus@0";
+		__overlay__ {
+			ethernet@6800000 {
+				status = "okay";
+				nvidia,mac-addr-idx = <0>;
+				nvidia,max-platform-mtu = <16383>;
+				/* 1=enable, 0=disable */
+				nvidia,pause_frames = <1>;
+				phy-handle = <&mgbe0_aqr113c_phy>;
+				phy-mode = "10gbase-r";
+				/* 0:XFI 10G, 1:XFI 5G, 2:USXGMII 10G, 3:USXGMII 5G */
+				nvidia,phy-iface-mode = <0>;
+				nvidia,phy-reset-gpio = <&gpio TEGRA234_MAIN_GPIO(Y, 1) 0>;
+				nvidia,mdio_addr = <0>;
+
+				mdio {
+					compatible = "nvidia,eqos-mdio";
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					mgbe0_aqr113c_phy: ethernet_phy@0 {
+						compatible = "ethernet-phy-ieee802.3-c45";
+						reg = <0x0>;
+						nvidia,phy-rst-pdelay-msec = <150>; /* msec */
+						nvidia,phy-rst-duration-usec = <221000>; /* usec */
+						interrupt-parent = <&gpio>;
+						interrupts = <TEGRA234_MAIN_GPIO(Y, 3) IRQ_TYPE_LEVEL_LOW>;
+					};
+				};
+			};
+		};
+	};
 };
