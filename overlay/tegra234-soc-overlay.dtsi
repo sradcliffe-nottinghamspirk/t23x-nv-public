@@ -12,6 +12,7 @@
 #include <dt-bindings/interrupt-controller/irq.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/gpio/tegra234-gpio.h>
+#include <dt-bindings/power/tegra234-powergate.h>
 #include "tegra234-soc-display-overlay.dtsi"
 
 
@@ -516,6 +517,76 @@
 					#sound-dai-cells = <1>;
 					status = "disabled";
 				};
+			};
+
+			ethernet@6800000 {
+				compatible = "nvidia,tegra234-mgbe";
+				reg = <0x06810000 0x10000>, /* MGBE base */
+				      <0x068A0000 0x10000>, /* XPCS base */
+				      <0x068D0000 0x10000>, /* MACsec RM base */
+				      <0x06800000 0x10000>; /* HV base */
+				reg-names = "mac", "xpcs", "macsec-base", "hypervisor";
+				interrupts =    <0 384 0x4>,    /* common */
+						<0 385 0x4>,    /* vm0 */
+						<0 386 0x4>,    /* vm1 */
+						<0 387 0x4>,    /* vm2 */
+						<0 388 0x4>,    /* vm3 */
+						<0 389 0x4>,    /* vm4 */
+						<0 390 0x4>,    /* MACsec non-secure intr */
+						<0 391 0x4>;    /* MACsec secure intr */
+				interrupt-names = "common", "vm0", "vm1", "vm2", "vm3", "vm4",
+						  "macsec-ns-irq", "macsec-s-irq";
+				resets = <&bpmp TEGRA234_RESET_MGBE0_MAC>,
+					 <&bpmp TEGRA234_RESET_MGBE0_PCS>,
+					 <&bpmp TEGRA234_RESET_MGBE0_MACSEC>; /* MACsec non-secure reset */
+				reset-names = "mac", "pcs", "macsec_ns_rst";
+				clocks = <&bpmp TEGRA234_CLK_MGBE0_RX_INPUT_M>,
+					 <&bpmp TEGRA234_CLK_MGBE0_RX_PCS_M>,
+					 <&bpmp TEGRA234_CLK_MGBE0_RX_PCS_INPUT>,
+					 <&bpmp TEGRA234_CLK_MGBE0_RX_PCS>,
+					 <&bpmp TEGRA234_CLK_MGBE0_TX>,
+					 <&bpmp TEGRA234_CLK_MGBE0_TX_PCS>,
+					 <&bpmp TEGRA234_CLK_MGBE0_MAC_DIVIDER>,
+					 <&bpmp TEGRA234_CLK_MGBE0_MAC>,
+					 <&bpmp TEGRA234_CLK_MGBE0_EEE_PCS>,
+					 <&bpmp TEGRA234_CLK_MGBE0_APP>,
+					 <&bpmp TEGRA234_CLK_MGBE0_PTP_REF>,
+					 <&bpmp TEGRA234_CLK_MGBE0_MACSEC>,
+					 <&bpmp TEGRA234_CLK_MGBE0_RX_INPUT>;
+				clock-names = "rx-input-m", "rx-pcs-m", "rx-pcs-input",
+					      "rx-pcs", "tx", "tx-pcs", "mac-divider",
+					      "mac", "eee-pcs", "mgbe", "ptp-ref",
+					      "mgbe_macsec", "rx-input";
+				interconnects = <&mc TEGRA234_MEMORY_CLIENT_MGBEARD>,
+						<&mc TEGRA234_MEMORY_CLIENT_MGBEAWR>;
+				interconnect-names = "dma-mem", "write";
+				iommus = <&smmu_niso0 TEGRA234_SID_MGBE>;
+				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_MGBEB>;
+				nvidia,num-dma-chans = <10>;
+				nvidia,dma-chans = <0 1 2 3 4 5 6 7 8 9>;
+				nvidia,num-mtl-queues = <10>;
+				nvidia,mtl-queues = <0 1 2 3 4 5 6 7 8 9>;
+				nvidia,tc-mapping = <0 1 2 3 4 5 6 7 0 1>;
+				/* Residual Queue can be any valid queue except RxQ0 */
+				nvidia,residual-queue = <1>;
+				nvidia,rxq_enable_ctrl = <2 2 2 2 2 2 2 2 2 2>;
+				nvidia,tx-queue-prio = <0 1 2 3 4 5 6 7 0 0>;
+				nvidia,rx-queue-prio = <0x1 0x2 0x4 0x8 0x10 0x20 0x40 0x80 0x0 0x0>;
+				nvidia,dcs-enable = <0x1>;
+				nvidia,macsec-enable = <0x1>;
+				nvidia,rx_riwt = <512>;
+				nvidia,rx_frames = <64>;
+				nvidia,tx_usecs = <256>;
+				nvidia,tx_frames = <16>;
+				nvidia,promisc_mode = <1>;
+				nvidia,slot_num_check = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0>;
+				nvidia,slot_intvl_vals = <0x0 0x7D 0x7D 0x7D 0x7D 0x7D 0x7D 0x7D 0x7D 0x7D>;
+				nvidia,ptp_ref_clock_speed = <312500000>;
+				nvidia,instance_id = <0>; /* MGBE0 instance */
+				nvidia,ptp-rx-queue = <3>;
+				nvidia,dma_rx_ring_sz = <4096>;
+				nvidia,dma_tx_ring_sz = <4096>;
+				dma-coherent;
 			};
 		};
 	};
