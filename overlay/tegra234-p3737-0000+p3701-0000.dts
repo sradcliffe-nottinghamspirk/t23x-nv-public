@@ -10,6 +10,7 @@
 #include "tegra234-p3701-0000.dtsi"
 #include "overlay/tegra234-audio-dai-links-overlay.dtsi"
 #include "tegra234-dcb-p3737-0000-p3701-0000.dtsi"
+#include "overlay/tegra234-camera.dtsi"
 
 / {
 	fragment-t234-p3737-p3701@0 {
@@ -306,6 +307,23 @@
 						interrupts = <TEGRA234_MAIN_GPIO(Y, 3) IRQ_TYPE_LEVEL_LOW>;
 					};
 				};
+			};
+		};
+	};
+
+	fragment-t234-p3737-p3701@24 {
+		target-path = "/";
+		__overlay__ {
+			hsp_rce: tegra-hsp@b950000 {
+				compatible = "nvidia,tegra186-hsp";
+				reg = <0 0x0b950000 0 0x00090000>;
+				interrupts =	<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_1 IRQ_TYPE_LEVEL_HIGH>,
+						<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_2 IRQ_TYPE_LEVEL_HIGH>,
+						<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_3 IRQ_TYPE_LEVEL_HIGH>,
+						<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_4 IRQ_TYPE_LEVEL_HIGH>;
+				#mbox-cells = <2>;
+				interrupt-names = "shared1", "shared2", "shared3", "shared4";
+				status = "okay";
 			};
 		};
 	};
