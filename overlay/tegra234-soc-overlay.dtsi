@@ -18,6 +18,8 @@
 
 #define TEGRA234_POWER_DOMAIN_PVA		30U
 #define TEGRA234_POWER_DOMAIN_GPU		35U
+#define TEGRA234_POWER_DOMAIN_DLAA		32U
+#define TEGRA234_POWER_DOMAIN_DLAB		33U
 
 / {
 	overlay-name = "Add nvidia,p3737-0000+p3701-0000 Overlay Support";
@@ -776,6 +778,47 @@
 					<&bpmp TEGRA234_RESET_HWPM>;
 				reset-names = "la", "hwpm";
 				iommus = <&smmu_niso1 TEGRA234_SID_HWMP_PMA>;
+				status = "okay";
+			};
+
+			nvdla0: nvdla0@15880000 {
+				compatible = "nvidia,tegra234-nvdla";
+				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_DLAA>;
+				reg = <0x15880000 0x00040000>;
+				interrupts = <GIC_SPI 236 IRQ_TYPE_LEVEL_HIGH>;
+
+				resets = <&bpmp TEGRA234_RESET_DLA0>;
+				clocks = <&bpmp TEGRA234_CLK_DLA0_CORE>,
+					 <&bpmp TEGRA234_CLK_DLA0_FALCON>;
+				clock-names = "nvdla0", "nvdla0_flcn";
+
+				interconnects = <&mc TEGRA234_MEMORY_CLIENT_DLA0RDA &emc>,
+						<&mc TEGRA234_MEMORY_CLIENT_DLA0FALRDB &emc>,
+						<&mc TEGRA234_MEMORY_CLIENT_DLA0WRA &emc>,
+						<&mc TEGRA234_MEMORY_CLIENT_DLA0FALWRB &emc>;
+				interconnect-names = "dma-mem", "read-1", "write", "write-1";
+				iommus = <&smmu_niso1 TEGRA234_SID_NVDLA0>;
+				dma-coherent;
+				status = "okay";
+			};
+			nvdla1: nvdla1@158c0000 {
+				compatible = "nvidia,tegra234-nvdla";
+				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_DLAB>;
+				reg = <0x158c0000 0x00040000>;
+				interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_HIGH>;
+
+				resets = <&bpmp TEGRA234_RESET_DLA1>;
+				clocks = <&bpmp TEGRA234_CLK_DLA1_CORE>,
+					 <&bpmp TEGRA234_CLK_DLA1_FALCON>;
+				clock-names = "nvdla1", "nvdla1_flcn";
+
+				interconnects = <&mc TEGRA234_MEMORY_CLIENT_DLA1RDA &emc>,
+						<&mc TEGRA234_MEMORY_CLIENT_DLA1FALRDB &emc>,
+						<&mc TEGRA234_MEMORY_CLIENT_DLA1WRA &emc>,
+						<&mc TEGRA234_MEMORY_CLIENT_DLA1FALWRB &emc>;
+				interconnect-names = "dma-mem", "read-1", "write", "write-1";
+				iommus = <&smmu_niso0 TEGRA234_SID_NVDLA1>;
+				dma-coherent;
 				status = "okay";
 			};
 
