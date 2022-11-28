@@ -22,7 +22,7 @@
 #define TEGRA234_POWER_DOMAIN_DLAB		33U
 
 / {
-	overlay-name = "Add nvidia,p3737-0000+p3701-0000 Overlay Support";
+	overlay-name = "Add nvidia,t234 Overlay Support";
 	compatible = "nvidia,tegra234";
 
 	fragment-t234@0 {
