@@ -26,6 +26,16 @@
 					alloc-ranges = <0x0 0x0 0x1 0x0>;
 					status = "okay";
 				};
+
+				ramoops_reserved: ramoops_carveout {
+					compatible = "ramoops";
+					size = <0x0 0x200000>;
+					record-size = <0x00010000>;
+					console-size = <0x00080000>;
+					alignment = <0x0 0x10000>;
+					alloc-ranges = <0x0 0x0 0x1 0x0>;
+					no-map;
+				};
 			};
 
 			tegra-carveouts {
