@@ -53,7 +53,7 @@
 				interrupt-names = "wdt-remote";
 
 				iommus = <&smmu_niso0 TEGRA234_SID_RCE>;
-				iommu-resv-regions = <0x0 0x0 0x0 0xA0000000 0x0 0xc0000000 0xffffffff 0xffffffff>;
+				memory-region = <&rce_resv>;
 				dma-coherent;
 
 				/* Memory bandwidth in kB/s during boot */
@@ -167,6 +167,11 @@
 			};
 
 			reserved-memory {
+				rce_resv: rce-reservation {
+					iommu-addresses = <&tegra_rce 0x0 0x00000000 0x00000000 0xA0000000>,
+							  <&tegra_rce 0x0 0xC0000000 0xffffffff 0x3fffffff>;
+				};
+
 				camdbg_reserved: camdbg_carveout {
 					compatible = "nvidia,camdbg_carveout";
 					size = <0 0x6400000>;
