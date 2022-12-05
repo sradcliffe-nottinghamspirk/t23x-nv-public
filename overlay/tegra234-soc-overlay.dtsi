@@ -43,7 +43,7 @@
 				status = "okay";
 			};
 
-			tegra_pinctrl: pinmux@2430000 {
+			pinmux: tegra_pinctrl: pinmux@2430000 {
 				compatible = "nvidia,tegra234-pinmux";
 				reg = <0x2430000 0x19100>,
 					<0xc300000 0x4000>;
