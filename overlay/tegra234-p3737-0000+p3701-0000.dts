@@ -98,6 +98,10 @@
 				realtek,dmic2-data-pin = <0>; /* RT5659_DMIC2_NULL */
 				realtek,jack-detect-source = <7>;
 
+				/* Codec IRQ output */
+				interrupt-parent = <&gpio>;
+				interrupts = <TEGRA234_MAIN_GPIO(AC, 5) GPIO_ACTIVE_HIGH>;
+
 				#sound-dai-cells = <1>;
 				sound-name-prefix = "CVB-RT";
 
