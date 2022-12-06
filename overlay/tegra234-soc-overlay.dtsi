@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
-// Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 
 #include <dt-bindings/clock/tegra234-clock.h>
@@ -30,9 +30,15 @@
 		__overlay__ {
 			watchdog@2190000 {
 				compatible = "nvidia,tegra-wdt-t234";
+#if LINUX_VERSION > 515
 				reg = <0x02190000 0x10000>, /* WDT0 */
 				      <0x02090000 0x10000>, /* TMR0 */
 				      <0x02080000 0x10000>; /* TKE */
+#else
+				reg = <0x0 0x02190000 0x0 0x10000>, /* WDT0 */
+				      <0x0 0x02090000 0x0 0x10000>, /* TMR0 */
+				      <0x0 0x02080000 0x0 0x10000>; /* TKE */
+#endif
 				interrupts = <7 0x4 8 0x4>; /* TKE shared int */
 				nvidia,watchdog-index = <0>;
 				nvidia,timer-index = <7>;
@@ -45,20 +51,34 @@
 
 			pinmux: tegra_pinctrl: pinmux@2430000 {
 				compatible = "nvidia,tegra234-pinmux";
+#if LINUX_VERSION > 515
 				reg = <0x2430000 0x19100>,
-					<0xc300000 0x4000>;
+				      <0xc300000 0x4000>;
+#else
+				reg = <0x0 0x2430000 0x0 0x19100>,
+				      <0x0 0xc300000 0x0 0x4000>;
+#endif
 				#gpio-range-cells = <3>;
 				status = "okay";
 			};
 
 			tegra_ufs: ufshci@2500000 {
 				compatible = "tegra234,ufs_variant";
+#if LINUX_VERSION > 515
 				reg = <0x02500000 0x4000>,
 				      <0x02510000 0x1000>,
 				      <0x02518000 0x1000>,
 				      <0x02520000 0x1000>,
 				      <0x02470000 0x4000>,
 				      <0x02480000 0x4000>;
+#else
+				reg = <0x0 0x02500000 0x0 0x4000>,
+				      <0x0 0x02510000 0x0 0x1000>,
+				      <0x0 0x02518000 0x0 0x1000>,
+				      <0x0 0x02520000 0x0 0x1000>,
+				      <0x0 0x02470000 0x0 0x4000>,
+				      <0x0 0x02480000 0x0 0x4000>;
+#endif
 				interrupts = < 0 44 0x04 >;
 				interconnects = <&mc TEGRA234_MEMORY_CLIENT_UFSHCR>,
 						<&mc TEGRA234_MEMORY_CLIENT_UFSHCW>;
@@ -135,7 +155,11 @@
 
 			serial@3110000 {
 				compatible = "nvidia,tegra194-hsuart";
+#if LINUX_VERSION > 515
 				reg = <0x03110000 0x10000>;
+#else
+				reg = <0x0 0x03110000 0x0 0x10000>;
+#endif
 				reg-shift = <2>;
 				interrupts = <0 113 0x04>;
 				clocks = <&bpmp TEGRA234_CLK_UARTB>,
@@ -148,7 +172,11 @@
 
 			mmc@3400000 {
 				compatible = "nvidia,tegra234-sdhci", "nvidia,tegra194-sdhci";
+#if LINUX_VERSION > 515
 				reg = <0x03400000 0x20000>;
+#else
+				reg = <0x0 0x03400000 0x0 0x20000>;
+#endif
 				interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
 				clocks = <&bpmp TEGRA234_CLK_SDMMC1>,
 					 <&bpmp TEGRA234_CLK_SDMMC_LEGACY_TM>;
@@ -199,7 +227,11 @@
 
 			tachometer@39c0000 {
 				compatible = "nvidia,pwm-tegra234-tachometer";
+#if LINUX_VERSION > 515
 				reg = <0x039c0000 0x10>;
+#else
+				reg = <0x0 0x039c0000 0x0 0x10>;
+#endif
 				#pwm-cells = <2>;
 				clocks = <&bpmp TEGRA234_CLK_TACH0>;
 				clock-names = "tach";
@@ -213,9 +245,15 @@
 
 			gpu@17000000 {
 				compatible = "nvidia,ga10b";
+#if LINUX_VERSION > 515
 				reg = <0x17000000 0x01000000>,
 				      <0x18000000 0x01000000>,
 				      <0x03b41000 0x00001000>;
+#else
+				reg = <0x0 0x17000000 0x0 0x01000000>,
+				      <0x0 0x18000000 0x0 0x01000000>,
+				      <0x0 0x03b41000 0x0 0x00001000>;
+#endif
 				interrupt-parent = <&gic>;
 				interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH>,
 					     <GIC_SPI 70 IRQ_TYPE_LEVEL_HIGH>,
@@ -523,10 +561,17 @@
 
 			ethernet@6800000 {
 				compatible = "nvidia,tegra234-mgbe";
+#if LINUX_VERSION > 515
 				reg = <0x06810000 0x10000>, /* MGBE base */
 				      <0x068A0000 0x10000>, /* XPCS base */
 				      <0x068D0000 0x10000>, /* MACsec RM base */
 				      <0x06800000 0x10000>; /* HV base */
+#else
+				reg = <0x0 0x06810000 0x0 0x10000>, /* MGBE base */
+				      <0x0 0x068A0000 0x0 0x10000>, /* XPCS base */
+				      <0x0 0x068D0000 0x0 0x10000>, /* MACsec RM base */
+				      <0x0 0x06800000 0x0 0x10000>; /* HV base */
+#endif
 				reg-names = "mac", "xpcs", "macsec-base", "hypervisor";
 				interrupts =    <0 384 0x4>,    /* common */
 						<0 385 0x4>,    /* vm0 */
@@ -596,17 +641,28 @@
 	fragment-t234@1 {
 		target-path = "/bus@0/host1x@13e00000";
 		__overlay__ {
+#if LINUX_VERSION > 515
 			#address-cells = <1>;
 			#size-cells = <1>;
+			ranges = <0x14800000 0x14800000 0x02000000>,
+				 <0x24700000 0x24700000 0x00080000>;
+#else
+			#address-cells = <2>;
+			#size-cells = <2>;
+			ranges = <0x0 0x14800000 0x0 0x14800000 0x0 0x02000000>,
+				 <0x0 0x24700000 0x0 0x24700000 0x0 0x00080000>;
+#endif
 
 			interrupt-parent = <&gic>;
 
-			ranges = <0x14800000 0x14800000 0x02000000>,
-				 <0x24700000 0x24700000 0x00080000>;
 
 			nvjpg@15380000 {
 				compatible = "nvidia,tegra234-nvjpg";
+#if LINUX_VERSION > 515
 				reg = <0x15380000 0x00040000>;
+#else
+				reg = <0x0 0x15380000 0x0 0x00040000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_NVJPG>;
 				clock-names = "nvjpg";
 				resets = <&bpmp TEGRA234_RESET_NVJPG>;
@@ -624,7 +680,11 @@
 
 			nvdec@15480000 {
 				compatible = "nvidia,tegra234-nvdec";
+#if LINUX_VERSION > 515
 				reg = <0x15480000 0x00040000>;
+#else
+				reg = <0x0 0x15480000 0x0 0x00040000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_NVDEC>,
 				         <&bpmp TEGRA234_CLK_FUSE>,
 				         <&bpmp TEGRA234_CLK_TSEC_PKA>;
@@ -643,7 +703,11 @@
 
 			nvenc@154c0000 {
 				compatible = "nvidia,tegra234-nvenc";
+#if LINUX_VERSION > 515
 				reg = <0x154c0000 0x00040000>;
+#else
+				reg = <0x0 0x154c0000 0x0 0x00040000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_NVENC>;
 				clock-names = "nvenc";
 				resets = <&bpmp TEGRA234_RESET_NVENC>;
@@ -659,7 +723,11 @@
 
 			nvjpg@15540000 {
 				compatible = "nvidia,tegra234-nvjpg";
+#if LINUX_VERSION > 515
 				reg = <0x15540000 0x00040000>;
+#else
+				reg = <0x0 0x15540000 0x0 0x00040000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_NVJPG1>;
 				clock-names = "nvjpg";
 				resets = <&bpmp TEGRA234_RESET_NVJPG1>;
@@ -677,7 +745,11 @@
 
 			ofa@15a50000 {
 				compatible = "nvidia,tegra234-ofa";
+#if LINUX_VERSION > 515
 				reg = <0x15a50000 0x00040000>;
+#else
+				reg = <0x0 0x15a50000 0x0 0x00040000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_OFA>;
 				clock-names = "ofa";
 				resets = <&bpmp TEGRA234_RESET_OFA>;
@@ -693,7 +765,11 @@
 
 			se@15810000 {
 				compatible = "nvidia,tegra234-se1-nvhost";
+#if LINUX_VERSION > 515
 				reg = <0x15810000 0x10000>;
+#else
+				reg = <0x0 0x15810000 0x0 0x10000>;
+#endif
 				supported-algos = "drbg";
 				nvidia,io-coherent;
 				opcode_addr = <0x1004>;
@@ -710,7 +786,11 @@
 
 			se@15820000 {
 				compatible = "nvidia,tegra234-se2-nvhost";
+#if LINUX_VERSION > 515
 				reg = <0x15820000 0x10000>;
+#else
+				reg = <0x0 0x15820000 0x0 0x10000>;
+#endif
 				supported-algos = "aes", "cmac", "xts", "aead";
 				nvidia,io-coherent;
 				opcode_addr = <0x2004>;
@@ -728,7 +808,11 @@
 
 			se@15840000 {
 				compatible = "nvidia,tegra234-se4-nvhost";
+#if LINUX_VERSION > 515
 				reg = <0x15840000 0x10000>;
+#else
+				reg = <0x0 0x15840000 0x0 0x10000>;
+#endif
 				supported-algos = "sha", "sha3", "hmac";
 				nvidia,io-coherent;
 				opcode_addr = <0x4004>;
@@ -746,7 +830,11 @@
 
 			tsec@15500000 {
 				compatible = "nvidia,tegra234-tsec";
+#if LINUX_VERSION > 515
 				reg = <0x15500000 0x00040000>;
+#else
+				reg = <0x0 0x15500000 0x0 0x00040000>;
+#endif
 				interrupts = <0 228 0x04>;
 				resets = <&bpmp TEGRA234_RESET_TSEC>;
 				clocks = <&bpmp TEGRA234_CLK_TSEC>,
@@ -763,6 +851,7 @@
 			tegra_soc_hwpm {
 				compatible = "nvidia,t234-soc-hwpm";
 				dma-coherent;
+#if LINUX_VERSION > 515
 				reg = <0xf100000 0x1000>,
 				      <0xf101000 0x1000>,
 				      <0xf102000 0x1000>,
@@ -817,6 +906,62 @@
 				      <0xf133000 0x1000>,
 				      <0xf14a000 0x2000>,
 				      <0xf14d000 0x1000>;
+#else
+				reg = <0x0 0xf100000 0x0 0x1000>,
+				      <0x0 0xf101000 0x0 0x1000>,
+				      <0x0 0xf102000 0x0 0x1000>,
+				      <0x0 0xf103000 0x0 0x1000>,
+				      <0x0 0xf104000 0x0 0x1000>,
+				      <0x0 0xf105000 0x0 0x1000>,
+				      <0x0 0xf106000 0x0 0x1000>,
+				      <0x0 0xf107000 0x0 0x1000>,
+				      <0x0 0xf108000 0x0 0x1000>,
+				      <0x0 0xf109000 0x0 0x1000>,
+				      <0x0 0xf10a000 0x0 0x1000>,
+				      <0x0 0xf10b000 0x0 0x1000>,
+				      <0x0 0xf10c000 0x0 0x1000>,
+				      <0x0 0xf10d000 0x0 0x1000>,
+				      <0x0 0xf10e000 0x0 0x1000>,
+				      <0x0 0xf10f000 0x0 0x1000>,
+				      <0x0 0xf110000 0x0 0x1000>,
+				      <0x0 0xf111000 0x0 0x1000>,
+				      <0x0 0xf112000 0x0 0x1000>,
+				      <0x0 0xf113000 0x0 0x1000>,
+				      <0x0 0xf114000 0x0 0x1000>,
+				      <0x0 0xf115000 0x0 0x1000>,
+				      <0x0 0xf116000 0x0 0x1000>,
+				      <0x0 0xf117000 0x0 0x1000>,
+				      <0x0 0xf118000 0x0 0x1000>,
+				      <0x0 0xf119000 0x0 0x1000>,
+				      <0x0 0xf11a000 0x0 0x1000>,
+				      <0x0 0xf11b000 0x0 0x1000>,
+				      <0x0 0xf11c000 0x0 0x1000>,
+				      <0x0 0xf11d000 0x0 0x1000>,
+				      <0x0 0xf11e000 0x0 0x1000>,
+				      <0x0 0xf11f000 0x0 0x1000>,
+				      <0x0 0xf120000 0x0 0x1000>,
+				      <0x0 0xf121000 0x0 0x1000>,
+				      <0x0 0xf122000 0x0 0x1000>,
+				      <0x0 0xf123000 0x0 0x1000>,
+				      <0x0 0xf124000 0x0 0x1000>,
+				      <0x0 0xf125000 0x0 0x1000>,
+				      <0x0 0xf126000 0x0 0x1000>,
+				      <0x0 0xf127000 0x0 0x1000>,
+				      <0x0 0xf128000 0x0 0x1000>,
+				      <0x0 0xf129000 0x0 0x1000>,
+				      <0x0 0xf12a000 0x0 0x1000>,
+				      <0x0 0xf12b000 0x0 0x1000>,
+				      <0x0 0xf12c000 0x0 0x1000>,
+				      <0x0 0xf12d000 0x0 0x1000>,
+				      <0x0 0xf12e000 0x0 0x1000>,
+				      <0x0 0xf12f000 0x0 0x1000>,
+				      <0x0 0xf130000 0x0 0x1000>,
+				      <0x0 0xf131000 0x0 0x1000>,
+				      <0x0 0xf132000 0x0 0x1000>,
+				      <0x0 0xf133000 0x0 0x1000>,
+				      <0x0 0xf14a000 0x0 0x2000>,
+				      <0x0 0xf14d000 0x0 0x1000>;
+#endif
 
 				reg-names = "perfmon_vi0",
 					"perfmon_vi1",
@@ -871,7 +1016,11 @@
 			nvdla0: nvdla0@15880000 {
 				compatible = "nvidia,tegra234-nvdla";
 				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_DLAA>;
+#if LINUX_VERSION > 515
 				reg = <0x15880000 0x00040000>;
+#else
+				reg = <0x0 0x15880000 0x0 0x00040000>;
+#endif
 				interrupts = <GIC_SPI 236 IRQ_TYPE_LEVEL_HIGH>;
 
 				resets = <&bpmp TEGRA234_RESET_DLA0>;
@@ -891,7 +1040,11 @@
 			nvdla1: nvdla1@158c0000 {
 				compatible = "nvidia,tegra234-nvdla";
 				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_DLAB>;
+#if LINUX_VERSION > 515
 				reg = <0x158c0000 0x00040000>;
+#else
+				reg = <0x0 0x158c0000 0x0 0x00040000>;
+#endif
 				interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_HIGH>;
 
 				resets = <&bpmp TEGRA234_RESET_DLA1>;
@@ -912,8 +1065,13 @@
 			pva0: pva0@16000000 {
 				compatible = "nvidia,tegra234-pva";
 				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_PVA>;
+#if LINUX_VERSION > 515
 				reg = <0x16000000 0x800000>,
 				      <0x24700000 0x080000>;
+#else
+				reg = <0x0 0x16000000 0x0 0x800000>,
+				      <0x0 0x24700000 0x0 0x080000>;
+#endif
 				interrupts = <0 234 0x04>,
 					<0 432 0x04>,
 					<0 433 0x04>,
@@ -1059,7 +1217,11 @@
 			pwm2: pwm@3290000 {
 				compatible = "nvidia,tegra234-pwm",
 					     "nvidia,tegra194-pwm";
+#if LINUX_VERSION > 515
 				reg = <0x3290000 0x10000>;
+#else
+				reg = <0x0 0x3290000 0x0 0x10000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_PWM2>;
 				clock-names = "pwm";
 				resets = <&bpmp TEGRA234_RESET_PWM2>;
@@ -1071,7 +1233,11 @@
 			pwm3: pwm@32a0000 {
 				compatible = "nvidia,tegra234-pwm",
 					     "nvidia,tegra194-pwm";
+#if LINUX_VERSION > 515
 				reg = <0x32a0000 0x10000>;
+#else
+				reg = <0x0 0x32a0000 0x0 0x10000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_PWM3>;
 				clock-names = "pwm";
 				resets = <&bpmp TEGRA234_RESET_PWM3>;
@@ -1083,7 +1249,11 @@
 			pwm4: pwm@c340000 {
 				compatible = "nvidia,tegra234-pwm",
 					     "nvidia,tegra194-pwm";
+#if LINUX_VERSION > 515
 				reg = <0xc340000 0x10000>;
+#else
+				reg = <0x0 0xc340000 0x0 0x10000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_PWM4>;
 				clock-names = "pwm";
 				resets = <&bpmp TEGRA234_RESET_PWM4>;
@@ -1095,7 +1265,11 @@
 			pwm5: pwm@32c0000 {
 				compatible = "nvidia,tegra234-pwm",
 					     "nvidia,tegra194-pwm";
+#if LINUX_VERSION > 515
 				reg = <0x32c0000 0x10000>;
+#else
+				reg = <0x0 0x32c0000 0x0 0x10000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_PWM5>;
 				clock-names = "pwm";
 				resets = <&bpmp TEGRA234_RESET_PWM5>;
@@ -1107,7 +1281,11 @@
 			pwm6: pwm@32d0000 {
 				compatible = "nvidia,tegra234-pwm",
 					     "nvidia,tegra194-pwm";
+#if LINUX_VERSION > 515
 				reg = <0x32d0000 0x10000>;
+#else
+				reg = <0x0 0x32d0000 0x0 0x10000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_PWM6>;
 				clock-names = "pwm";
 				resets = <&bpmp TEGRA234_RESET_PWM6>;
@@ -1119,7 +1297,11 @@
 			pwm7: pwm@32e0000 {
 				compatible = "nvidia,tegra234-pwm",
 					     "nvidia,tegra194-pwm";
+#if LINUX_VERSION > 515
 				reg = <0x32e0000 0x10000>;
+#else
+				reg = <0x0 0x32e0000 0x0 0x10000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_PWM7>;
 				clock-names = "pwm";
 				resets = <&bpmp TEGRA234_RESET_PWM7>;
@@ -1131,7 +1313,11 @@
 			pwm8: pwm@32f0000 {
 				compatible = "nvidia,tegra234-pwm",
 					     "nvidia,tegra194-pwm";
+#if LINUX_VERSION > 515
 				reg = <0x32f0000 0x10000>;
+#else
+				reg = <0x0 0x32f0000 0x0 0x10000>;
+#endif
 				clocks = <&bpmp TEGRA234_CLK_PWM8>;
 				clock-names = "pwm";
 				resets = <&bpmp TEGRA234_RESET_PWM8>;
