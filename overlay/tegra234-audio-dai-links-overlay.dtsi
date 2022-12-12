@@ -1094,8 +1094,6 @@
 					codec {
 						sound-dai = <&tegra_dspk2 DSPK_DUMMY>;
 					};
-					codec@1 {
-					};
 				};
 
 				xbar_to_amx1_in1: nvidia-audio-card,dai-link@88 {
