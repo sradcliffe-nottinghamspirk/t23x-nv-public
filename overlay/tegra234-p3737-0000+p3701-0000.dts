@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
-// Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 
 /dts-v1/;
@@ -114,7 +114,7 @@
 	fragment-t234-p3737-p3701@9 {
 		target-path = "/";
 		__overlay__ {
-			sound {
+			tegra_sound_graph: tegra_sound: sound {
 				compatible = "nvidia,tegra186-ape";
 				clocks = <&bpmp TEGRA234_CLK_PLLA>,
 					 <&bpmp TEGRA234_CLK_PLLA_OUT0>,
@@ -150,6 +150,8 @@
 						prefix = "CVB-RT";
 					};
 				};
+
+				hdr40_snd_link_i2s: nvidia-audio-card,dai-link@77 { };
 			};
 
 			reserved-memory {
@@ -308,6 +310,8 @@
 					};
 				};
 			};
+
+ 			hdr40_i2c1: i2c@c250000 { };
 		};
 	};
 
@@ -327,4 +331,12 @@
 			};
 		};
 	};
+
+	fragment-t234-p3737-p3701@25 {
+		target-path = "/bus@0/aconnect@2900000/ahub@2900800/i2s@2901100/ports/port@1";
+		__overlay__ {
+			hdr40_snd_i2s_dap_ep: endpoint { };
+		};
+	};
+
 };
