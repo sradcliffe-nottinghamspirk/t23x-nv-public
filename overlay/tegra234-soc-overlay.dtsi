@@ -148,6 +148,14 @@
 				status = "okay";
 			};
 
+			serial@31d0000 {
+				compatible = "arm,sbsa-uart";
+				reg = <0x31d0000 0x10000>;
+				interrupts = <GIC_SPI 285 IRQ_TYPE_LEVEL_HIGH>;
+				current-speed = <115200>;
+				status = "okay";
+			};
+
 			mmc@3400000 {
 				compatible = "nvidia,tegra234-sdhci", "nvidia,tegra194-sdhci";
 				reg = <0x03400000 0x20000>;
