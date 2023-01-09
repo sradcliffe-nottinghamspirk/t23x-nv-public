@@ -272,6 +272,21 @@
 
 				status = "okay";
 			};
+
+			tachometer@39c0000 {
+				compatible = "nvidia,pwm-tegra234-tachometer";
+				reg = <0x039c0000 0x10>;
+				interrupts = <GIC_SPI 192 IRQ_TYPE_LEVEL_HIGH>;
+				#pwm-cells = <2>;
+				clocks = <&bpmp TEGRA234_CLK_TACH0>;
+				clock-names = "tach";
+				resets = <&bpmp TEGRA234_RESET_TACH0>;
+				reset-names = "tach";
+				pulse-per-rev = <2>;
+				capture-window-length = <2>;
+				upper-threshold = <0xfffff>;
+				lower-threshold = <0x0>;
+			};
 		};
 	};
 
