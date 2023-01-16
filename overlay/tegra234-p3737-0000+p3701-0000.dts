@@ -13,6 +13,7 @@
 #include "overlay/tegra234-camera.dtsi"
 
 / {
+	compatible = "nvidia,p3737-0000+p3701-0000";
 	fragment-t234-p3737-p3701@0 {
 		target-path = "/bpmp/i2c";
 		__overlay__ {
