@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
-// Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 
 #include <dt-bindings/clock/tegra234-clock.h>
@@ -409,6 +409,8 @@
 
 					/* Below modules are upstreamed, but not in v5.15 */
 					tegra_ope1: processing-engine@2908000 {
+						status = "okay";
+
 						compatible = "nvidia,tegra234-ope",
 							     "nvidia,tegra210-ope";
 						reg = <0x2908000 0x100>;
@@ -432,6 +434,8 @@
 					};
 
 					tegra_asrc: asrc@2910000 {
+						status = "okay";
+
 						compatible = "nvidia,tegra194-asrc";
 						reg = <0x2910000 0x2000>;
 						#address-cells = <1>;
@@ -442,6 +446,8 @@
 
 					/* Below AHUB modules are not yet upstreamed */
 					tegra_arad: arad@290e400 {
+						status = "okay";
+
 						compatible = "nvidia,tegra186-arad";
 						reg = <0x290e400 0x400>;
 						#address-cells = <1>;
@@ -450,6 +456,8 @@
 					};
 
 					tegra_afc1: afc@2907000 {
+						status = "okay";
+
 						compatible = "nvidia,tegra234-afc",
 							     "nvidia,tegra186-afc";
 						reg = <0x2907000 0x100>;
@@ -460,6 +468,8 @@
 					};
 
 					tegra_afc2: afc@2907100 {
+						status = "okay";
+
 						compatible = "nvidia,tegra234-afc",
 							     "nvidia,tegra186-afc";
 						reg = <0x2907100 0x100>;
@@ -470,6 +480,8 @@
 					};
 
 					tegra_afc3: afc@2907200 {
+						status = "okay";
+
 						compatible = "nvidia,tegra234-afc",
 							     "nvidia,tegra186-afc";
 						reg = <0x2907200 0x100>;
@@ -480,6 +492,8 @@
 					};
 
 					tegra_afc4: afc@2907300 {
+						status = "okay";
+
 						compatible = "nvidia,tegra234-afc",
 							     "nvidia,tegra186-afc";
 						reg = <0x2907300 0x100>;
@@ -490,6 +504,8 @@
 					};
 
 					tegra_afc5: afc@2907400 {
+						status = "okay";
+
 						compatible = "nvidia,tegra234-afc",
 							     "nvidia,tegra186-afc";
 						reg = <0x2907400 0x100>;
@@ -500,6 +516,8 @@
 					};
 
 					tegra_afc6: afc@2907500 {
+						status = "okay";
+
 						compatible = "nvidia,tegra234-afc",
 							     "nvidia,tegra186-afc";
 						reg = <0x2907500 0x100>;
