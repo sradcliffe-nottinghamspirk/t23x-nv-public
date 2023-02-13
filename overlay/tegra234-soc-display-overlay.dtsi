@@ -7,6 +7,18 @@
 	fragment-t234-display@0 {
 		target-path = "/";
 		__overlay__ {
+			reserved-memory {
+				#address-cells = <2>;
+				#size-cells = <2>;
+				ranges;
+
+				fb0_reserved: framebuffer@0,0 {
+					compatible = "framebuffer";
+					reg = <0x00 0x00 0x00 0x00>;
+					iommu-addresses = <&dc0 0x0 0x0 0x0 0x0>;
+					status = "disabled";
+				};
+			};
 
 			dce@d800000 {
 				compatible = "nvidia,tegra234-dce";
@@ -20,7 +32,7 @@
 				status = "disabled";
 			};
 
-			display@13800000 {
+			dc0: display@13800000 {
 				compatible = "nvidia,tegra234-display";
 				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_DISP>;
 				nvidia,num-dpaux-instance = <1>;
