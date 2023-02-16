@@ -244,8 +244,6 @@
 				isp_thi: isp-thi@14b00000 {
 					compatible = "nvidia,tegra194-isp-thi";
 					resets = <&bpmp TEGRA234_RESET_ISP>;
-					iommus = <&smmu_niso1 TEGRA234_SID_ISP>;
-					dma-coherent;
 					status = "okay";
 				};
 
