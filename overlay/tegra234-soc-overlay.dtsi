@@ -1406,4 +1406,69 @@
 			};
 		};
 	};
+
+	fragment-t234@11 {
+		target-path = "/";
+		__overlay__ {
+			pcie@140a0000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE8>;
+			};
+
+			pcie@140c0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE9>;
+			};
+
+			pcie@140e0000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
+			};
+
+			pcie@14100000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE1>;
+			};
+
+			pcie@14120000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE2>;
+			};
+
+			pcie@14140000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE3>;
+			};
+
+			pcie@14160000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE4>;
+			};
+
+			pcie@14180000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE0>;
+			};
+
+			pcie@141a0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
+			};
+
+			pcie@141c0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
+			};
+
+			pcie@141e0000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
+			};
+
+			pcie-ep@141a0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
+			};
+
+			pcie-ep@141c0000{
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
+			};
+
+			pcie-ep@141e0000{
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
+			};
+
+			pcie-ep@140e0000{
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
+			};
+		};
+	};
 };
