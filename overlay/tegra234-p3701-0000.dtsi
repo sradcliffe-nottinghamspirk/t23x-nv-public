@@ -92,6 +92,20 @@
 						#thermal-sensor-cells = <1>;
 						status = "okay";
 					};
+
+					vrs11_1@20 {
+						compatible = "nvidia,vrs11";
+						reg = <0x20>;
+						rail-name-loopA = "GPU";
+						rail-name-loopB = "CPU";
+					};
+
+					vrs11_2@22 {
+						compatible = "nvidia,vrs11";
+						reg = <0x22>;
+						rail-name-loopA = "SOC";
+						rail-name-loopB = "CV";
+					};
 				};
 			};
 
