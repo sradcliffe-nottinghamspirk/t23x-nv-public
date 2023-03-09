@@ -2,6 +2,7 @@
 // Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include "tegra234-p3737-0000-camera-imx274-dual.dtsi"
+#include "tegra234-p3737-0000-camera-imx185-a00.dtsi"
 / {
 
 };
