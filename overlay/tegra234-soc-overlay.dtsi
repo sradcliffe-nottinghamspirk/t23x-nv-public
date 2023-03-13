@@ -1191,6 +1191,7 @@
 				i2c6 = "/bus@0/i2c@31c0000";
 				i2c7 = "/bus@0/i2c@c250000";
 				i2c8 = "/bus@0/i2c@31e0000";
+				qspi0 = "/bus@0/spi@3270000";
 			};
 		};
 	};
@@ -1598,6 +1599,23 @@
 
 			pcie-ep@140e0000{
 				iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
+			};
+		};
+	};
+
+	fragment-t234@12 {
+		target-path = "/bus@0/spi@3270000";
+		__overlay__ {
+			status = "okay";
+			dma-names = "rx", "tx";
+			dma-coherent;
+			iommus = <&smmu_niso1 TEGRA234_SID_QSPI0>;
+			flash@0 {
+				compatible = "jedec,spi-nor";
+				reg = <0>;
+				spi-max-frequency = <51000000>;
+				spi-tx-bus-width = <1>;
+				spi-rx-bus-width = <1>;
 			};
 		};
 	};
