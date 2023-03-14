@@ -159,6 +159,7 @@
 				dma-coherent;
 
 				nvidia,memory-controller = <&mc>;
+				status = "okay";
 			};
 
 			nvenc@154c0000 {
