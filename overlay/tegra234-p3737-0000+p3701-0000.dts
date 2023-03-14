@@ -340,23 +340,6 @@
 		};
 	};
 
-	fragment-t234-p3737-p3701@26 {
-		target-path = "/bus@0";
-		__overlay__ {
-			pcie@14100000 {
-				status = "disabled";
-			};
-
-			pcie@14160000 {
-				status = "disabled";
-			};
-
-			pcie@141a0000 {
-				status = "disabled";
-			};
-		};
-	};
-
 	fragment-t234-p3737-p3701@27 {
 		target-path = "/";
 		__overlay__ {
