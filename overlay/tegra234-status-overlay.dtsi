@@ -303,6 +303,15 @@
 					status = "okay";
 				};
 			};
+
+			cpus {
+				idle-states {
+					c7 {
+						status = "okay";
+					};
+				};
+			};
+
 		};
 	};
 };
