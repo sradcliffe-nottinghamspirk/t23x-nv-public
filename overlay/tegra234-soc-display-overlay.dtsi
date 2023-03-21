@@ -1,11 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0
 // Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
-#include <dt-bindings/memory/tegra234-smmu-streamid.h>
-#include <dt-bindings/soc/tegra234-powergate.h>
-#include <dt-bindings/clock/tegra234-clock-oot.h>
-#include <dt-bindings/reset/tegra234-reset-oot.h>
-#include <dt-bindings/memory/tegra234-mc-oot.h>
+#include <dt-bindings/power/tegra234-powergate.h>
 
 / {
 	fragment-t234-display@0 {

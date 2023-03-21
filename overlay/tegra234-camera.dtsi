@@ -6,12 +6,10 @@
  */
 
 
-#include <dt-bindings/soc/nvidia,tegra186-hsp.h>
+#include <dt-bindings/mailbox/tegra186-hsp.h>
 #include <dt-bindings/interrupt/tegra234-irq.h>
-#include <dt-bindings/memory/tegra234-smmu-streamid.h>
-#include <dt-bindings/clock/tegra234-clock-oot.h>
-#include <dt-bindings/reset/tegra234-reset-oot.h>
-#include <dt-bindings/soc/tegra234-powergate.h>
+#include <dt-bindings/power/tegra234-powergate.h>
+#include <dt-bindings/memory/tegra234-mc.h>
 
 / {
 	fragment-camera@0 {
@@ -194,7 +192,7 @@
 					nvidia,vi-falcon-device = <&vi0_thi>;
 					resets = <&bpmp TEGRA234_RESET_VI>;
 					reset-names = "vi0";
-					iommus = <&smmu_iso TEGRA_SID_ISO_VI>;
+					iommus = <&smmu_iso TEGRA234_SID_ISO_VI>;
 					non-coherent;
 					status = "okay";
 				};

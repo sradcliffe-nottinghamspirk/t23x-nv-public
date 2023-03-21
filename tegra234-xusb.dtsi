@@ -1,15 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0
 
 #include <dt-bindings/clock/tegra234-clock.h>
-#include <dt-bindings/clock/tegra234-clock-oot.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/memory/tegra234-mc.h>
-#include <dt-bindings/memory/tegra234-mc-oot.h>
-#include <dt-bindings/power/tegra234-powergate.h>
-#include <dt-bindings/power/tegra234-powergate-oot.h>
 #include <dt-bindings/reset/tegra234-reset.h>
-#include <dt-bindings/reset/tegra234-reset-oot.h>
-#include <dt-bindings/memory/tegra234-smmu-streamid.h>
 
 / {
 	bus@0 {
