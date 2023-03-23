@@ -1,0 +1,36 @@
+// SPDX-License-Identifier: GPL-2.0
+// Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+#include <dt-bindings/memory/tegra234-mc.h>
+
+/ {
+	fragment-t234-platform@0 {
+		target-path = "/";
+		__overlay__ {
+			pwm-fan {
+				compatible = "pwm-fan";
+				pwms = <&pwm3 0 45334>;
+				cooling-levels = <0 64 128 255>;
+				#cooling-cells = <2>;
+			};
+
+			bus@0 {
+				smmu_test {
+					compatible = "nvidia,smmu_test";
+					iommus = <&smmu_niso0 TEGRA234_SID_SMMU_TEST>;
+					status = "okay";
+				};
+
+				spi@3270000 {
+					flash@0 {
+						compatible = "jedec,spi-nor";
+						reg = <0>;
+						spi-max-frequency = <51000000>;
+						spi-tx-bus-width = <1>;
+						spi-rx-bus-width = <1>;
+					};
+				};
+			};
+		};
+	};
+};

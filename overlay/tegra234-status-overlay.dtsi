@@ -1,0 +1,253 @@
+// SPDX-License-Identifier: GPL-2.0
+// Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+// This files contans the status override of the DT nodes for overlay files.
+
+/ {
+	fragment-t234-soc@0 {
+		__overlay__ {
+			bus@0 {
+				watchdog@2190000 {
+					status = "okay";
+				};
+
+				pinmux@2430000 {
+					status = "okay";
+				};
+
+				ufshci@2500000 {
+					status = "okay";
+				};
+
+				serial@3110000 {
+					status = "okay";
+				};
+
+				serial@31d0000 {
+					status = "okay";
+				};
+
+				mmc@3400000 {
+					status = "okay";
+				};
+
+				tachometer@39c0000 {
+					status = "okay";
+				};
+
+				gpu@17000000 {
+					status = "okay";
+				};
+
+				smmu_test {
+					status = "okay";
+				};
+
+				aconnect@2900000 {
+					ahub@2900800 {
+						arad@290e400 {
+							status = "okay";
+						};
+
+						afc@2907000 {
+							status = "okay";
+						};
+
+						afc@2907100 {
+							status = "okay";
+						};
+
+						afc@2907200 {
+							status = "okay";
+						};
+
+						afc@2907300 {
+							status = "okay";
+						};
+
+						afc@2907400 {
+							status = "okay";
+						};
+
+						afc@2907500 {
+							status = "okay";
+						};
+					};
+				};
+
+				ethernet@6800000 {
+					status = "okay";
+				};
+
+				pwm@32a0000 {
+					status = "okay";
+				};
+
+				pwm@32c0000 {
+					status = "okay";
+				};
+
+				pwm@32f0000 {
+					status = "okay";
+				};
+
+				host1x@13e00000 {
+					nvjpg@15380000 {
+						status = "okay";
+					};
+
+					nvdec@15480000 {
+						status = "okay";
+					};
+
+					nvenc@154c0000 {
+						status = "okay";
+					};
+
+					nvjpg@15540000 {
+						status = "okay";
+					};
+
+					ofa@15a50000 {
+						status = "okay";
+					};
+
+					se@15810000 {
+						status = "okay";
+					};
+
+					se@15820000 {
+						status = "okay";
+					};
+
+					se@15840000 {
+						status = "okay";
+					};
+
+					tsec@15500000 {
+						status = "okay";
+					};
+
+					tegra_soc_hwpm {
+						status = "okay";
+					};
+
+					nvdla0@15880000 {
+						status = "okay";
+					};
+
+					nvdla1@158c0000 {
+						status = "okay";
+					};
+
+					pva0@16000000 {
+						status = "okay";
+
+						pva0_niso1_ctx0 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx1 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx2 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx3 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx4 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx5 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx6 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx7 {
+							status = "okay";
+						};
+					};
+				};
+			};
+
+			tegra_mce@e100000 {
+				status = "okay";
+			};
+
+			scf-pmu {
+				status = "okay";
+			};
+		};
+	};
+
+	fragment-t234-base@0 {
+		__overlay__ {
+			bus@0 {
+				hda@3510000 {
+					status = "okay";
+				};
+
+				rtc@c2a0000 {
+					status = "okay";
+				};
+
+				aconnect@2900000 {
+					ahub@2900800 {
+						i2s@2901200 {
+							status = "okay";
+						};
+
+						i2s@2901400 {
+							status = "okay";
+						};
+
+						dmic@2904000 {
+							status = "okay";
+						};
+
+						dmic@2904100 {
+							status = "okay";
+						};
+
+
+						dmic@2904300 {
+							status = "okay";
+						};
+
+						dspk@2905000 {
+							status = "okay";
+						};
+
+						dspk@2905100 {
+							status = "okay";
+						};
+
+						processing-engine@2908000 {
+							status = "okay";
+						};
+
+						asrc@2910000 {
+							status = "okay";
+						};
+					};
+				};
+
+				spi@3270000 {
+					status = "okay";
+				};
+
+				pwm@3280000 {
+					status = "okay";
+				};
+			};
+		};
+	};
+};
