@@ -1,0 +1,504 @@
+// SPDX-License-Identifier: GPL-2.0
+// Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+// This file contains the additional parameters which are missing from DT nodes of T234
+// available in base/tegra234.dtsi
+
+#include <dt-bindings/clock/tegra234-clock.h>
+#include <dt-bindings/reset/tegra234-reset.h>
+#include <dt-bindings/memory/tegra234-mc.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/interrupt/tegra234-irq.h>
+#include <dt-bindings/gpio/tegra234-gpio.h>
+#include <dt-bindings/p2u/tegra234-p2u.h>
+#include <dt-bindings/power/tegra234-powergate.h>
+#include <dt-bindings/pinctrl/pinctrl-tegra.h>
+
+#define TEGRA234_POWER_DOMAIN_PVA		30U
+#define TEGRA234_POWER_DOMAIN_GPU		35U
+#define TEGRA234_POWER_DOMAIN_DLAA		32U
+#define TEGRA234_POWER_DOMAIN_DLAB		33U
+
+/ {
+	overlay-name = "Add nvidia,t234 Overlay Support";
+	compatible = "nvidia,tegra234";
+
+	fragment-t234-base@0 {
+		target-path = "/";
+		 __overlay__ {
+			aliases {
+				serial1 = "/bus@0/serial@3110000";
+				i2c0 = "/bus@0/i2c@3160000";
+				i2c1 = "/bus@0/i2c@c240000";
+				i2c2 = "/bus@0/i2c@3180000";
+				i2c3 = "/bus@0/i2c@3190000";
+				i2c4 = "/bpmp/i2c";
+				i2c5 = "/bus@0/i2c@31b0000";
+				i2c6 = "/bus@0/i2c@31c0000";
+				i2c7 = "/bus@0/i2c@c250000";
+				i2c8 = "/bus@0/i2c@31e0000";
+				qspi0 = "/bus@0/spi@3270000";
+			};
+
+			pcie@140a0000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE8>;
+			};
+
+			pcie@140c0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE9>;
+			};
+
+			pcie@140e0000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
+			};
+
+			pcie@14100000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE1>;
+			};
+
+			pcie@14120000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE2>;
+			};
+
+			pcie@14140000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE3>;
+			};
+
+			pcie@14160000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE4>;
+			};
+
+			pcie@14180000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE0>;
+			};
+
+			pcie@141a0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
+			};
+
+			pcie@141c0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
+			};
+
+			pcie@141e0000 {
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
+			};
+
+			pcie-ep@141a0000 {
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
+			};
+
+			pcie-ep@141c0000{
+				iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
+			};
+
+			pcie-ep@141e0000{
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
+			};
+
+			pcie-ep@140e0000{
+				iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
+			};
+
+			bus@0 {
+				hda@3510000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_HDA>;
+				};
+
+				aconnect@2900000 {
+					ahub@2900800 {
+						compatible = "nvidia,tegra234-ahub-oot";
+
+						assigned-clocks = <&bpmp TEGRA234_CLK_PLLA>,
+								  <&bpmp TEGRA234_CLK_PLLA_OUT0>,
+								  <&bpmp TEGRA234_CLK_AHUB>;
+						assigned-parent-clocks = <0>,
+								<&bpmp TEGRA234_CLK_PLLA>,
+								<&bpmp TEGRA234_CLK_PLLP_OUT0>;
+						assigned-clock-rates = <294912000>,
+								       <49152000>,
+								       <81600000>;
+
+						#sound-dai-cells = <1>;
+
+						/*
+						 * Below modules are upstreamed and present in v5.15,
+						 * but not yet feature complete. Thus use OOT driver
+						 * versions for now.
+						 */
+						i2s@2901000 {
+							compatible = "nvidia,tegra210-i2s-oot";
+							#sound-dai-cells = <1>;
+							nvidia,ahub-i2s-id = <0>;
+						};
+
+						i2s@2901100 {
+							compatible = "nvidia,tegra210-i2s-oot";
+							#sound-dai-cells = <1>;
+							nvidia,ahub-i2s-id = <1>;
+						};
+
+						i2s@2901200 {
+							compatible = "nvidia,tegra210-i2s-oot";
+							#sound-dai-cells = <1>;
+							nvidia,ahub-i2s-id = <2>;
+						};
+
+						i2s@2901300 {
+							compatible = "nvidia,tegra210-i2s-oot";
+							#sound-dai-cells = <1>;
+							nvidia,ahub-i2s-id = <3>;
+						};
+
+						i2s@2901400 {
+							compatible = "nvidia,tegra210-i2s-oot";
+							#sound-dai-cells = <1>;
+							nvidia,ahub-i2s-id = <4>;
+						};
+
+						i2s@2901500 {
+							compatible = "nvidia,tegra210-i2s-oot";
+							#sound-dai-cells = <1>;
+							nvidia,ahub-i2s-id = <5>;
+						};
+
+						dmic@2904000 {
+							compatible = "nvidia,tegra210-dmic-oot";
+							#sound-dai-cells = <1>;
+						};
+
+						dmic@2904100 {
+							compatible = "nvidia,tegra210-dmic-oot";
+							#sound-dai-cells = <1>;
+						};
+
+						dmic@2904200 {
+							compatible = "nvidia,tegra210-dmic-oot";
+							#sound-dai-cells = <1>;
+						};
+
+						dmic@2904300 {
+							compatible = "nvidia,tegra210-dmic-oot";
+							#sound-dai-cells = <1>;
+						};
+
+						dspk@2905000 {
+							compatible = "nvidia,tegra186-dspk-oot";
+							#sound-dai-cells = <1>;
+						};
+
+						dspk@2905100 {
+							compatible = "nvidia,tegra186-dspk-oot";
+							#sound-dai-cells = <1>;
+						};
+
+						admaif@290f000 {
+							compatible = "nvidia,tegra186-admaif-oot";
+							#sound-dai-cells = <1>;
+						};
+
+						/*
+						 * Below modules are upstreamed. DT device nodes
+						 * are backported. But drivers are not in v5.15.
+						 * Thus use existing downstream drivers and add
+						 * '#sound-dai-cells' property needed for downstream
+						 * machine driver.
+						 */
+						sfc@2902000 {
+							#sound-dai-cells = <1>;
+						};
+
+						sfc@2902200 {
+							#sound-dai-cells = <1>;
+						};
+
+						sfc@2902400 {
+							#sound-dai-cells = <1>;
+						};
+
+						sfc@2902600 {
+							#sound-dai-cells = <1>;
+						};
+
+						amx@2903000 {
+							#sound-dai-cells = <1>;
+						};
+
+						amx@2903100 {
+							#sound-dai-cells = <1>;
+						};
+
+						amx@2903200 {
+							#sound-dai-cells = <1>;
+						};
+
+						amx@2903300 {
+							#sound-dai-cells = <1>;
+						};
+
+						adx@2903800 {
+							#sound-dai-cells = <1>;
+						};
+
+						adx@2903900 {
+							#sound-dai-cells = <1>;
+						};
+
+						adx@2903a00 {
+							#sound-dai-cells = <1>;
+						};
+
+						adx@2903b00 {
+							#sound-dai-cells = <1>;
+						};
+
+						mvc@290a000 {
+							#sound-dai-cells = <1>;
+						};
+
+						mvc@290a200 {
+							#sound-dai-cells = <1>;
+						};
+
+						amixer@290bb00 {
+							#sound-dai-cells = <1>;
+						};
+
+						processing-engine@2908000 {
+							#sound-dai-cells = <1>;
+						};
+
+						asrc@2910000 {
+							compatible = "nvidia,tegra194-asrc";
+							#address-cells = <1>;
+							#size-cells = <1>;
+							#sound-dai-cells = <1>;
+						};
+					};
+
+					/*
+					 * Placeholder for ADSP audio device.
+					 * Not required for L4T releases, will be
+					 * enabled as and when needed.
+					 */
+					tegra_adsp_audio: adsp_audio {
+						#sound-dai-cells = <1>;
+						status = "disabled";
+					};
+				};
+
+				host1x@13e00000 {
+					#address-cells = <1>;
+					#size-cells = <1>;
+
+					interrupt-parent = <&gic>;
+
+					ranges = <0x14800000 0x14800000 0x02000000>,
+						 <0x24700000 0x24700000 0x00080000>;
+				};
+
+				spi@3270000 {
+					dma-names = "rx", "tx";
+					dma-coherent;
+					iommus = <&smmu_niso1 TEGRA234_SID_QSPI0>;
+				};
+
+				pwm@3280000 {
+					compatible = "nvidia,tegra234-pwm",
+						     "nvidia,tegra194-pwm";
+				};
+
+				pmc@c360000 {
+					sdmmc1_3v3: sdmmc1-3v3 {
+						pins = "sdmmc1-hv";
+						power-source = <1>;
+					};
+
+					sdmmc1_1v8: sdmmc1-1v8 {
+						pins = "sdmmc1-hv";
+						power-source = <0>;
+					};
+
+					sdmmc3_3v3: sdmmc3-3v3 {
+						pins = "sdmmc3-hv";
+						power-source = <1>;
+					};
+
+					sdmmc3_1v8: sdmmc3-1v8 {
+						pins = "sdmmc3-hv";
+						power-source = <0>;
+					};
+				};
+
+				phy@3e00000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L0_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID0>;
+				};
+
+				phy@3e10000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L1_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID1>;
+				};
+
+				phy@3e20000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L2_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID2>;
+				};
+
+				phy@3e30000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L3_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID3>;
+				};
+
+				phy@3e40000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L4_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID4>;
+				};
+
+				phy@3e50000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L5_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID5>;
+				};
+
+				phy@3e60000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L6_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID6>;
+				};
+
+				phy@3e70000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L7_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID7>;
+				};
+
+				phy@3e90000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L0_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID8>;
+				};
+
+				phy@3ea0000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L1_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID9>;
+				};
+
+				phy@3eb0000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L2_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID10>;
+				};
+
+				phy@3ec0000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L3_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID11>;
+				};
+
+				phy@3ed0000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L4_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID12>;
+				};
+
+				phy@3ee0000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L5_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID13>;
+				};
+
+				phy@3ef0000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L6_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID14>;
+				};
+
+				phy@3f00000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_NVHS_L7_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID15>;
+				};
+
+				phy@3f20000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L0_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID16>;
+				};
+
+				phy@3f30000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L1_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID17>;
+				};
+
+				phy@3f40000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L2_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID18>;
+				};
+
+				phy@3f50000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L3_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID19>;
+				};
+
+				phy@3f60000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L4_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID20>;
+				};
+
+				phy@3f70000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L5_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID21>;
+				};
+
+				phy@3f80000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L6_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID22>;
+				};
+
+				phy@3f90000 {
+					interrupts = <GIC_SPI TEGRA234_IRQ_GBE_L7_P2U IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "intr";
+
+					nvidia,bpmp = <&bpmp TEGRA234_P2U_LANE_ID23>;
+				};
+			};
+		};
+	};
+};
