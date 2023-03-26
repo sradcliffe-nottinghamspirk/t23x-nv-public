@@ -253,6 +253,10 @@
 				};
 			};
 
+			tegra-hsp@b950000 {
+				status = "okay";
+			};
+
 			tegra_mce@e100000 {
 				status = "okay";
 			};

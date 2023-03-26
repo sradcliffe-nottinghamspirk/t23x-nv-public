@@ -239,23 +239,6 @@
 		};
 	};
 
-	fragment-t234-p3737-p3701@24 {
-		target-path = "/";
-		__overlay__ {
-			hsp_rce: tegra-hsp@b950000 {
-				compatible = "nvidia,tegra186-hsp";
-				reg = <0 0x0b950000 0 0x00090000>;
-				interrupts =	<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_1 IRQ_TYPE_LEVEL_HIGH>,
-						<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_2 IRQ_TYPE_LEVEL_HIGH>,
-						<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_3 IRQ_TYPE_LEVEL_HIGH>,
-						<GIC_SPI TEGRA234_IRQ_RCE_HSP_SHARED_4 IRQ_TYPE_LEVEL_HIGH>;
-				#mbox-cells = <2>;
-				interrupt-names = "shared1", "shared2", "shared3", "shared4";
-				status = "okay";
-			};
-		};
-	};
-
 	fragment-t234-p3737-p3701@25 {
 		target-path = "/bus@0/aconnect@2900000/ahub@2900800/i2s@2901100/ports/port@1";
 		__overlay__ {
