@@ -5,85 +5,79 @@
 #include "tegra234-p3737-0000-camera-imx185-a00.dtsi"
 / {
 	fragment-t234-p3701-0000@0 {
-		target-path = "/bus@0/i2c@c240000";
-		__overlay__ {
-			status = "okay";
-
-			ina3221@40 {
-				compatible = "ti,ina3221";
-				reg = <0x40>;
-				#address-cells = <1>;
-				#size-cells = <0>;
-				#io-channel-cells = <1>;
-				channel@0 {
-					reg = <0x0>;
-					label = "VDD_GPU_SOC";
-					shunt-resistor-micro-ohms = <2000>;
-				};
-				channel@1 {
-					reg = <0x1>;
-					label = "VDD_CPU_CV";
-					shunt-resistor-micro-ohms = <2000>;
-				};
-				channel@2 {
-					reg = <0x2>;
-					label = "VIN_SYS_5V0";
-					shunt-resistor-micro-ohms = <2000>;
-				};
-			};
-
-			ina3221@41 {
-				compatible = "ti,ina3221";
-				reg = <0x41>;
-				#address-cells = <1>;
-				#size-cells = <0>;
-				#io-channel-cells = <1>;
-				channel@0 {
-					reg = <0x0>;
-					label = "NC";
-				};
-				channel@1 {
-					reg = <0x1>;
-					label = "VDDQ_VDD2_1V8AO";
-					shunt-resistor-micro-ohms = <2000>;
-				};
-				channel@2 {
-					reg = <0x2>;
-					label = "NC";
-				};
-			};
-		};
-	};
-
-	fragment-t234-p3701-0000@1 {
-		target-path = "/bus@0/padctl@3520000";
-		__overlay__ {
-			vclamp-usb-supply = <&vdd_ao_1v8>;
-			avdd-usb-supply = <&vdd_ao_3v3>;
-
-			ports {
-				usb2-0 {
-					vbus-supply = <&vdd_5v0_sys>;
-				};
-
-				usb2-1 {
-					vbus-supply = <&vdd_5v0_sys>;
-				};
-
-				usb2-2 {
-					vbus-supply = <&vdd_5v0_sys>;
-				};
-
-				usb2-3 {
-					vbus-supply = <&vdd_5v0_sys>;
-				};
-			};
-		};
-	};
-
-	fragment-t234-p3701-0000@2 {
 		target-path = "/";
 		__overlay__ {
+			bus@0 {
+				i2c@c240000 {
+					ina3221@40 {
+						compatible = "ti,ina3221";
+						reg = <0x40>;
+						#address-cells = <1>;
+						#size-cells = <0>;
+						#io-channel-cells = <1>;
+						channel@0 {
+							reg = <0x0>;
+							label = "VDD_GPU_SOC";
+							shunt-resistor-micro-ohms = <2000>;
+						};
+						channel@1 {
+							reg = <0x1>;
+							label = "VDD_CPU_CV";
+							shunt-resistor-micro-ohms = <2000>;
+						};
+						channel@2 {
+							reg = <0x2>;
+							label = "VIN_SYS_5V0";
+							shunt-resistor-micro-ohms = <2000>;
+						};
+					};
+
+					ina3221@41 {
+						compatible = "ti,ina3221";
+						reg = <0x41>;
+						#address-cells = <1>;
+						#size-cells = <0>;
+						#io-channel-cells = <1>;
+						channel@0 {
+							reg = <0x0>;
+							label = "NC";
+						};
+						channel@1 {
+							reg = <0x1>;
+							label = "VDDQ_VDD2_1V8AO";
+							shunt-resistor-micro-ohms = <2000>;
+						};
+						channel@2 {
+							reg = <0x2>;
+							label = "NC";
+						};
+					};
+				};
+
+				padctl@3520000 {
+					vclamp-usb-supply = <&vdd_ao_1v8>;
+					avdd-usb-supply = <&vdd_ao_3v3>;
+
+					ports {
+						usb2-0 {
+							vbus-supply = <&vdd_5v0_sys>;
+						};
+
+						usb2-1 {
+							vbus-supply = <&vdd_5v0_sys>;
+						};
+
+						usb2-2 {
+							vbus-supply = <&vdd_5v0_sys>;
+						};
+
+						usb2-3 {
+							vbus-supply = <&vdd_5v0_sys>;
+						};
+					};
+				};
+			};
+
 			vdd_5v0_sys: regulator@0 {
 				compatible = "regulator-fixed";
 				regulator-name = "VIN_SYS_5V0";
@@ -115,6 +109,22 @@
 				regulator-name = "vdd-3v3-sys";
 				regulator-min-microvolt = <3300000>;
 				regulator-max-microvolt = <3300000>;
+			};
+
+			bpmp {
+				i2c {
+					vrs@3c {
+						compatible = "nvidia,vrs-pseq";
+						reg = <0x3c>;
+						interrupts = <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>;
+						interrupt-controller;
+						#interrupt-cells = <3>;
+						status = "okay";
+						vrs_rtc: rtc {
+							status = "okay";
+						};
+					};
+				};
 			};
 		};
 	};
