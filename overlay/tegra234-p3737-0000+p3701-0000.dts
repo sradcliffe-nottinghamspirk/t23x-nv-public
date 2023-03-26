@@ -8,7 +8,6 @@
 #include "overlay/tegra234-overlay.dtsi"
 #include "overlay/tegra234-thermal.dtsi"
 #include "overlay/tegra234-thermal-shutdown.dtsi"
-#include "tegra234-platform-overlay.dtsi"
 #include "tegra234-status-overlay.dtsi"
 #include "tegra234-p3737-0000.dtsi"
 #include "tegra234-p3701-0000.dtsi"
@@ -18,6 +17,19 @@
 
 / {
 	compatible = "nvidia,p3737-0000+p3701-0000";
+
+	fragment-t234-p3737-p3701@0 {
+		target-path = "/";
+		__overlay__ {
+			bus@0 {
+				smmu_test {
+					compatible = "nvidia,smmu_test";
+					iommus = <&smmu_niso0 TEGRA234_SID_SMMU_TEST>;
+					status = "okay";
+				};
+			};
+		};
+	};
 
 	fragment-t234-p3737-p3701@5 {
 		target-path = "/bus@0/i2c@31b0000";

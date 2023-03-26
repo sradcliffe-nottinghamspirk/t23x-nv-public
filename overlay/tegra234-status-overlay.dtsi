@@ -39,10 +39,6 @@
 					status = "okay";
 				};
 
-				smmu_test {
-					status = "okay";
-				};
-
 				aconnect@2900000 {
 					ahub@2900800 {
 						arad@290e400 {

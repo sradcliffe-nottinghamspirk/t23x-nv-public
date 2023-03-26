@@ -76,6 +76,16 @@
 						};
 					};
 				};
+
+				spi@3270000 {
+					flash@0 {
+						compatible = "jedec,spi-nor";
+						reg = <0>;
+						spi-max-frequency = <51000000>;
+						spi-tx-bus-width = <1>;
+						spi-rx-bus-width = <1>;
+					};
+				};
 			};
 
 			vdd_5v0_sys: regulator@0 {
