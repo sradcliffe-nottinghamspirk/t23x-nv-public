@@ -27,20 +27,15 @@
 					iommus = <&smmu_niso0 TEGRA234_SID_SMMU_TEST>;
 					status = "okay";
 				};
+
+				i2c@31b0000 {
+					nvidia,hw-instance-id = <0x5>;
+				};
+
+				hdr40_i2c1: i2c@c250000 {
+				};
 			};
-		};
-	};
 
-	fragment-t234-p3737-p3701@5 {
-		target-path = "/bus@0/i2c@31b0000";
-		__overlay__ {
-			nvidia,hw-instance-id = <0x5>;
-		};
-	};
-
-	fragment-t234-p3737-p3701@10 {
-		target-path = "/";
-		__overlay__ {
 			cpus {
 				cpu_core_power_states {
 					C1: c1 {
@@ -109,13 +104,6 @@
 					cpu-idle-states = <&C7>;
 				};
 			};
-		};
-	};
-
-	fragment-t234-p3737-p3701@23 {
-		target-path = "/bus@0";
-		__overlay__ {
- 			hdr40_i2c1: i2c@c250000 { };
 		};
 	};
 };
