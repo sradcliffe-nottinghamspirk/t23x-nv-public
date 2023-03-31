@@ -562,6 +562,8 @@
 				};
 
 				host1x@13e00000 {
+					dma-coherent;
+
 					nvjpg@15380000 {
 						compatible = "nvidia,tegra234-nvjpg";
 						reg = <0x15380000 0x00040000>;
