@@ -349,28 +349,6 @@
 						     "nvidia,tegra194-pwm";
 				};
 
-				pmc@c360000 {
-					sdmmc1_3v3: sdmmc1-3v3 {
-						pins = "sdmmc1-hv";
-						power-source = <1>;
-					};
-
-					sdmmc1_1v8: sdmmc1-1v8 {
-						pins = "sdmmc1-hv";
-						power-source = <0>;
-					};
-
-					sdmmc3_3v3: sdmmc3-3v3 {
-						pins = "sdmmc3-hv";
-						power-source = <1>;
-					};
-
-					sdmmc3_1v8: sdmmc3-1v8 {
-						pins = "sdmmc3-hv";
-						power-source = <0>;
-					};
-				};
-
 				phy@3e00000 {
 					interrupts = <GIC_SPI TEGRA234_IRQ_HSIO_L0_P2U IRQ_TYPE_LEVEL_HIGH>;
 					interrupt-names = "intr";
