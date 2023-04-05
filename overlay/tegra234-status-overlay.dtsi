@@ -23,14 +23,6 @@
 					status = "okay";
 				};
 
-				serial@31d0000 {
-					status = "okay";
-				};
-
-				mmc@3400000 {
-					status = "okay";
-				};
-
 				tachometer@39c0000 {
 					status = "okay";
 				};
@@ -75,24 +67,8 @@
 					status = "okay";
 				};
 
-				pwm@32a0000 {
-					status = "okay";
-				};
-
-				pwm@32c0000 {
-					status = "okay";
-				};
-
-				pwm@32f0000 {
-					status = "okay";
-				};
-
 				host1x@13e00000 {
 					nvjpg@15380000 {
-						status = "okay";
-					};
-
-					nvdec@15480000 {
 						status = "okay";
 					};
 
@@ -171,85 +147,6 @@
 							status = "okay";
 						};
 					};
-				};
-
-				padctl@3520000 {
-					status = "okay";
-					pads {
-						usb2 {
-							lanes {
-								usb2-0 {
-									status = "okay";
-								};
-
-								usb2-1 {
-									status = "okay";
-								};
-
-								usb2-2 {
-									status = "okay";
-								};
-
-								usb2-3 {
-									status = "okay";
-								};
-							};
-						};
-
-						usb3 {
-							lanes {
-								usb3-0 {
-									status = "okay";
-								};
-
-								usb3-1 {
-									status = "okay";
-								};
-
-								usb3-2 {
-									status = "okay";
-								};
-							};
-						};
-					};
-
-					ports {
-						usb2-0 {
-							status = "okay";
-						};
-
-						usb2-1 {
-							status = "okay";
-						};
-
-						usb2-2 {
-							status = "okay";
-						};
-
-						usb2-3 {
-							status = "okay";
-						};
-
-						usb3-0 {
-							status = "okay";
-						};
-
-						usb3-1 {
-							status = "okay";
-						};
-
-						usb3-2 {
-							status = "okay";
-						};
-					};
-				};
-
-				usb@3550000 {
-					status = "okay";
-				};
-
-				usb@3610000 {
-					status = "okay";
 				};
 			};
 
@@ -368,6 +265,12 @@
 					};
 				};
 
+				host1x@13e00000 {
+					nvdec@15480000 {
+						status = "okay";
+					};
+				};
+
 				i2c@3160000 {
 					status = "okay";
 				};
@@ -404,7 +307,106 @@
 					status = "okay";
 				};
 
+				serial@31d0000 {
+					status = "okay";
+				};
+
+				mmc@3400000 {
+					status = "okay";
+				};
+
+				pwm@32a0000 {
+					status = "okay";
+				};
+
+				pwm@32c0000 {
+					status = "okay";
+				};
+
+				pwm@32f0000 {
+					status = "okay";
+				};
+
 				pwm@3280000 {
+					status = "okay";
+				};
+
+				padctl@3520000 {
+					status = "okay";
+					pads {
+						usb2 {
+							lanes {
+								usb2-0 {
+									status = "okay";
+								};
+
+								usb2-1 {
+									status = "okay";
+								};
+
+								usb2-2 {
+									status = "okay";
+								};
+
+								usb2-3 {
+									status = "okay";
+								};
+							};
+						};
+
+						usb3 {
+							lanes {
+								usb3-0 {
+									status = "okay";
+								};
+
+								usb3-1 {
+									status = "okay";
+								};
+
+								usb3-2 {
+									status = "okay";
+								};
+							};
+						};
+					};
+
+					ports {
+						usb2-0 {
+							status = "okay";
+						};
+
+						usb2-1 {
+							status = "okay";
+						};
+
+						usb2-2 {
+							status = "okay";
+						};
+
+						usb2-3 {
+							status = "okay";
+						};
+
+						usb3-0 {
+							status = "okay";
+						};
+
+						usb3-1 {
+							status = "okay";
+						};
+
+						usb3-2 {
+							status = "okay";
+						};
+					};
+				};
+
+				usb@3550000 {
+					status = "okay";
+				};
+
+				usb@3610000 {
 					status = "okay";
 				};
 			};
