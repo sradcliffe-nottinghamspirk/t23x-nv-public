@@ -216,10 +216,6 @@
 	fragment-t234-base@0 {
 		__overlay__ {
 			bus@0 {
-				hda@3510000 {
-					status = "okay";
-				};
-
 				rtc@c2a0000 {
 					status = "okay";
 				};
@@ -252,14 +248,6 @@
 						};
 
 						dspk@2905100 {
-							status = "okay";
-						};
-
-						processing-engine@2908000 {
-							status = "okay";
-						};
-
-						asrc@2910000 {
 							status = "okay";
 						};
 					};
@@ -303,86 +291,7 @@
 					status = "okay";
 				};
 
-				pwm@32a0000 {
-					status = "okay";
-				};
-
-				padctl@3520000 {
-					status = "okay";
-					pads {
-						usb2 {
-							lanes {
-								usb2-0 {
-									status = "okay";
-								};
-
-								usb2-1 {
-									status = "okay";
-								};
-
-								usb2-2 {
-									status = "okay";
-								};
-
-								usb2-3 {
-									status = "okay";
-								};
-							};
-						};
-
-						usb3 {
-							lanes {
-								usb3-0 {
-									status = "okay";
-								};
-
-								usb3-1 {
-									status = "okay";
-								};
-
-								usb3-2 {
-									status = "okay";
-								};
-							};
-						};
-					};
-
-					ports {
-						usb2-0 {
-							status = "okay";
-						};
-
-						usb2-1 {
-							status = "okay";
-						};
-
-						usb2-2 {
-							status = "okay";
-						};
-
-						usb2-3 {
-							status = "okay";
-						};
-
-						usb3-0 {
-							status = "okay";
-						};
-
-						usb3-1 {
-							status = "okay";
-						};
-
-						usb3-2 {
-							status = "okay";
-						};
-					};
-				};
-
 				usb@3550000 {
-					status = "okay";
-				};
-
-				usb@3610000 {
 					status = "okay";
 				};
 			};

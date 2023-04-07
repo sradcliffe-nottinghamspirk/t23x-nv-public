@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0
 // Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
-
 / {
 	fragment-t234-p3737-0000@0 {
 		target-path = "/";
@@ -20,7 +19,6 @@
 						};
 
 						usb2-1 {
-							mode = "host";
 							port {
 								hs_typec_p0: endpoint {
 									remote-endpoint = <&hs_ucsi_ccg_p0>;
@@ -28,16 +26,7 @@
 							};
 						};
 
-						usb2-2 {
-							mode = "host";
-						};
-
-						usb2-3 {
-							mode = "host";
-						};
-
 						usb3-0 {
-							nvidia,usb2-companion = <1>;
 							port {
 								ss_typec_p0: endpoint {
 									remote-endpoint = <&ss_ucsi_ccg_p0>;
@@ -46,16 +35,11 @@
 						};
 
 						usb3-1 {
-							nvidia,usb2-companion = <0>;
 							port {
 								ss_typec_p1: endpoint {
 									remote-endpoint = <&ss_ucsi_ccg_p1>;
 								};
 							};
-						};
-
-						usb3-2 {
-							nvidia,usb2-companion = <3>;
 						};
 					};
 				};
@@ -64,18 +48,6 @@
 					phys = <&xpads_usb2_lanes_usb2_0>,
 						<&xpads_usb3_lanes_usb3_1>;
 					phy-names = "usb2-0", "usb3-1";
-				};
-
-				usb@3610000 {
-					phys =	<&xpads_usb2_lanes_usb2_0>,
-						<&xpads_usb2_lanes_usb2_1>,
-						<&xpads_usb2_lanes_usb2_2>,
-						<&xpads_usb2_lanes_usb2_3>,
-						<&xpads_usb3_lanes_usb3_0>,
-						<&xpads_usb3_lanes_usb3_1>,
-						<&xpads_usb3_lanes_usb3_2>;
-					phy-names = "usb2-0", "usb2-1", "usb2-2", "usb2-3",
-						"usb3-0", "usb3-1", "usb3-2";
 				};
 
 				i2c@c240000 {
@@ -248,13 +220,6 @@
 					linux,cma-default;
 					status = "okay";
 				};
-			};
-
-			pwm-fan {
-				compatible = "pwm-fan";
-				pwms = <&pwm3 0 45334>;
-				cooling-levels = <0 64 128 255>;
-				#cooling-cells = <2>;
 			};
 		};
 	};
