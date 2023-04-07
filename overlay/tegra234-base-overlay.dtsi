@@ -344,6 +344,47 @@
 					iommus = <&smmu_niso1 TEGRA234_SID_QSPI0>;
 				};
 
+				i2c@3160000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
+				i2c@3180000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
+				i2c@3190000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
+				i2c@31b0000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
+				i2c@31c0000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
+				i2c@31e0000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
+				i2c@c240000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
+				i2c@c250000 {
+					nvidia,hw-instance-id = <0x7>;
+					iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+					dma-coherent;
+				};
+
 				pwm@3280000 {
 					compatible = "nvidia,tegra234-pwm",
 						     "nvidia,tegra194-pwm";
