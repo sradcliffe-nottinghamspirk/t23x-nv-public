@@ -271,10 +271,6 @@
 					};
 				};
 
-				i2c@3160000 {
-					status = "okay";
-				};
-
 				i2c@c240000 {
 					status = "okay";
 				};
@@ -303,15 +299,7 @@
 					status = "okay";
 				};
 
-				spi@3270000 {
-					status = "okay";
-				};
-
 				serial@31d0000 {
-					status = "okay";
-				};
-
-				mmc@3400000 {
 					status = "okay";
 				};
 
