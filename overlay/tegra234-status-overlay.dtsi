@@ -307,18 +307,6 @@
 					status = "okay";
 				};
 
-				pwm@32c0000 {
-					status = "okay";
-				};
-
-				pwm@32f0000 {
-					status = "okay";
-				};
-
-				pwm@3280000 {
-					status = "okay";
-				};
-
 				padctl@3520000 {
 					status = "okay";
 					pads {
