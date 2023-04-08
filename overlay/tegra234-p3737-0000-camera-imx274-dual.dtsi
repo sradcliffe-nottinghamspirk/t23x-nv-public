@@ -66,4 +66,27 @@
 			};
 		};
 	};
+	fragment-camera-dual-imx274@1 {
+		target-path = "/";
+		__overlay__ {
+			eeprom-manager {
+				bus@1 {
+					i2c-bus = <&cam_i2c>;
+					eeprom@0 {
+						slave-address = <0x54>;
+						label = "sensor0";
+					};
+					eeprom@1 {
+						slave-address = <0x57>;
+						label = "sensor1";
+					};
+					eeprom@2 {
+						slave-address = <0x52>;
+						label = "sensor2";
+					};
+				};
+
+			};
+		};
+	};
 };

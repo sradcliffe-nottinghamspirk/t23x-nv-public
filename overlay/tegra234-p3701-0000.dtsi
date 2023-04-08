@@ -109,6 +109,16 @@
 					status = "okay";
 				};
 			};
+
+			eeprom-manager {
+				bus@0 {
+					i2c-bus = <&gen1_i2c>;
+					eeprom@0 {
+						slave-address = <0x50>;
+						label = "cvm";
+					};
+				};
+			};
 		};
 	};
 };
