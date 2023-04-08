@@ -225,7 +225,7 @@
 
 				isp: isp@14800000 {
 					compatible = "nvidia,tegra194-isp";
-					reg = <0x14800000 0x00010000>;
+					reg = <0x0 0x14800000 0x0 0x00010000>;
 
 					resets = <&bpmp TEGRA234_RESET_ISP>;
 					reset-names = "isp";

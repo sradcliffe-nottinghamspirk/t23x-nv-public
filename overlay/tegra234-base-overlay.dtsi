@@ -41,67 +41,67 @@
 				qspi0 = "/bus@0/spi@3270000";
 			};
 
-			pcie@140a0000 {
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE8>;
-			};
-
-			pcie@140c0000 {
-				iommus = <&smmu_niso0 TEGRA234_SID_PCIE9>;
-			};
-
-			pcie@140e0000 {
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
-			};
-
-			pcie@14100000 {
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE1>;
-			};
-
-			pcie@14120000 {
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE2>;
-			};
-
-			pcie@14140000 {
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE3>;
-			};
-
-			pcie@14160000 {
-				iommus = <&smmu_niso0 TEGRA234_SID_PCIE4>;
-			};
-
-			pcie@14180000 {
-				iommus = <&smmu_niso0 TEGRA234_SID_PCIE0>;
-			};
-
-			pcie@141a0000 {
-				iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
-			};
-
-			pcie@141c0000 {
-				iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
-			};
-
-			pcie@141e0000 {
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
-			};
-
-			pcie-ep@141a0000 {
-				iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
-			};
-
-			pcie-ep@141c0000{
-				iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
-			};
-
-			pcie-ep@141e0000{
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
-			};
-
-			pcie-ep@140e0000{
-				iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
-			};
-
 			bus@0 {
+				pcie@140a0000 {
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE8>;
+				};
+
+				pcie@140c0000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_PCIE9>;
+				};
+
+				pcie@140e0000 {
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
+				};
+
+				pcie@14100000 {
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE1>;
+				};
+
+				pcie@14120000 {
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE2>;
+				};
+
+				pcie@14140000 {
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE3>;
+				};
+
+				pcie@14160000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_PCIE4>;
+				};
+
+				pcie@14180000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_PCIE0>;
+				};
+
+				pcie@141a0000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
+				};
+
+				pcie@141c0000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
+				};
+
+				pcie@141e0000 {
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
+				};
+
+				pcie-ep@141a0000 {
+					iommus = <&smmu_niso0 TEGRA234_SID_PCIE5>;
+				};
+
+				pcie-ep@141c0000{
+					iommus = <&smmu_niso0 TEGRA234_SID_PCIE6>;
+				};
+
+				pcie-ep@141e0000{
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE7>;
+				};
+
+				pcie-ep@140e0000{
+					iommus = <&smmu_niso1 TEGRA234_SID_PCIE10>;
+				};
+
 				hda@3510000 {
 					iommus = <&smmu_niso0 TEGRA234_SID_HDA>;
 				};
@@ -330,9 +330,9 @@
 
 				ethernet@2310000 {
 					compatible = "nvidia,nveqos";
-					reg = <0x02310000 0x10000>,    /* EQOS Base Register */
-					      <0x023D0000 0x10000>,    /* MACSEC Base Register */
-					      <0x02300000 0x10000>;    /* HV Base Register */
+					reg = <0x0 0x02310000 0x0 0x10000>,    /* EQOS Base Register */
+					      <0x0 0x023D0000 0x0 0x10000>,    /* MACSEC Base Register */
+					      <0x0 0x02300000 0x0 0x10000>;    /* HV Base Register */
 					reg-names = "mac", "macsec-base", "hypervisor";
 					interrupts = <0 194 0x4>,       /* common */
 						     <0 186 0x4>, /* vm0 */
@@ -407,10 +407,10 @@
 
 				ethernet@6800000 {
 					compatible = "nvidia,tegra234-mgbe";
-					reg = <0x06810000 0x10000>, /* MGBE base */
-					      <0x068A0000 0x10000>, /* XPCS base */
-					      <0x068D0000 0x10000>, /* MACsec RM base */
-					      <0x06800000 0x10000>; /* HV base */
+					reg = <0x0 0x06810000 0x0 0x10000>, /* MGBE base */
+					      <0x0 0x068A0000 0x0 0x10000>, /* XPCS base */
+					      <0x0 0x068D0000 0x0 0x10000>, /* MACsec RM base */
+					      <0x0 0x06800000 0x0 0x10000>; /* HV base */
 					reg-names = "mac", "xpcs", "macsec-base", "hypervisor";
 					interrupts =    <0 384 0x4>,    /* common */
 							<0 385 0x4>,    /* vm0 */
@@ -477,13 +477,10 @@
 				};
 
 				host1x@13e00000 {
-					#address-cells = <1>;
-					#size-cells = <1>;
-
 					interrupt-parent = <&gic>;
 
-					ranges = <0x14800000 0x14800000 0x02000000>,
-						 <0x24700000 0x24700000 0x00080000>;
+					ranges = <0x0 0x14800000 0x0 0x14800000 0x0 0x02000000>,
+						 <0x0 0x24700000 0x0 0x24700000 0x0 0x00080000>;
 				};
 
 				spi@3270000 {
