@@ -5,6 +5,7 @@
 
 #include <dt-bindings/clock/tegra234-clock.h>
 #include <dt-bindings/reset/tegra234-reset.h>
+#include <dt-bindings/mailbox/tegra186-hsp.h>
 #include <dt-bindings/memory/tegra234-mc.h>
 #include <dt-bindings/interrupt-controller/irq.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
@@ -730,6 +731,64 @@
 					interrupt-names = "shared0";
 					#mbox-cells = <2>;
 					status = "disabled";
+				};
+
+				hsp_top1: hsp@3d00000 {
+					compatible = "nvidia,tegra234-hsp", "nvidia,tegra194-hsp";
+					reg = <0x0 0x03d00000 0x0 0x000a0000>;
+					interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH>,
+						     <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH>,
+						     <GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>,
+						     <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH>;
+					interrupt-names = "shared0", "shared1", "shared2", "shared3";
+					#mbox-cells = <2>;
+					status = "disabled";
+				};
+
+				aon: aon@c000000 {
+					compatible = "nvidia,tegra234-aon";
+					iommus = <&smmu_niso0 TEGRA234_SID_AON>;
+					dma-coherent;
+
+					/* common mailbox binding property, should be 1. */
+					#mbox-cells = <1>;
+					reg =	<0 0xc000000 0 0x800000>;
+					nvidia,ivc-carveout-base-ss = <0>;
+					nvidia,ivc-carveout-size-ss = <1>;
+					nvidia,ivc-rx-ss = <2>;
+					nvidia,ivc-tx-ss = <3>;
+
+					/* mailbox for debugging */
+					mboxes = <&aon 0>;
+
+					status = "disabled";
+
+					hsp {
+						compatible = "nvidia,tegra-aon-hsp";
+						mboxes =
+						  <&hsp_top1 TEGRA_HSP_MBOX_TYPE_SM TEGRA_HSP_SM_TX(5)>,
+						  <&hsp_top1 TEGRA_HSP_MBOX_TYPE_SM TEGRA_HSP_SM_RX(4)>;
+						mbox-names = "ivc-tx", "ivc-rx";
+					};
+
+					ivc-channels@80000000 {
+						#address-cells = <1>;
+						#size-cells = <0>;
+
+						ivc_aon_aondbg@0 {
+							reg = <0x0000>, <0x10000>;
+							reg-names = "rx", "tx";
+							nvidia,frame-count = <2>;
+							nvidia,frame-size = <64>;
+						};
+
+						ivc_aon_echo@100 {
+							reg = <0x0100>, <0x10100>;
+							reg-names = "rx", "tx";
+							nvidia,frame-count = <16>;
+							nvidia,frame-size = <64>;
+						};
+					};
 				};
 			};
 
