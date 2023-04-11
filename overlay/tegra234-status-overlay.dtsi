@@ -169,6 +169,10 @@
 			scf-pmu {
 				status = "okay";
 			};
+
+			nvpmodel {
+				status = "okay";
+			};
 		};
 	};
 
