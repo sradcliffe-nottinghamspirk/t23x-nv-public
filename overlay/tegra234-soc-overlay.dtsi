@@ -828,6 +828,13 @@
 				status = "disabled";
 			};
 
+			nvpmodel {
+				compatible = "nvidia,nvpmodel";
+				nvidia,bpmp = <&bpmp>;
+				clocks = <&bpmp TEGRA234_CLK_EMC>;
+				clock-names = "emc";
+				status = "disabled";
+			};
 		};
 	};
 };
