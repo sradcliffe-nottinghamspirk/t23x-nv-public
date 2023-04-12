@@ -28,6 +28,7 @@
 							reg = <0x2>;
 							label = "VIN_SYS_5V0";
 							shunt-resistor-micro-ohms = <2000>;
+							summation-bypass;
 						};
 					};
 
