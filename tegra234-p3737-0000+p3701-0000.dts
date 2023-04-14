@@ -2017,6 +2017,8 @@
 		};
 
 		pwm@32a0000 {
+			assigned-clocks = <&bpmp TEGRA234_CLK_PWM3>;
+			assigned-clock-parents = <&bpmp TEGRA234_CLK_PLLP_OUT0>;
 			status = "okay";
 		};
 
@@ -2206,7 +2208,7 @@
 		compatible = "pwm-fan";
 		pwms = <&pwm3 0 45334>;
 
-		cooling-levels = <0 64 128 255>;
+		cooling-levels = <0 95 178 255>;
 		#cooling-cells = <2>;
 	};
 
