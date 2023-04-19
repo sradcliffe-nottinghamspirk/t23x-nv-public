@@ -5,11 +5,11 @@
 /dts-v1/;
 /plugin/;
 
-#include "overlay/tegra234-overlay.dtsi"
-#include "overlay/tegra234-thermal.dtsi"
-#include "overlay/tegra234-thermal-shutdown.dtsi"
-#include "overlay/tegra234-audio-dai-links-overlay.dtsi"
-#include "overlay/tegra234-camera.dtsi"
+#include "tegra234-overlay.dtsi"
+#include "tegra234-thermal.dtsi"
+#include "tegra234-thermal-shutdown.dtsi"
+#include "tegra234-audio-dai-links-overlay.dtsi"
+#include "tegra234-camera.dtsi"
 #include "tegra234-status-overlay.dtsi"
 #include "tegra234-p3737-0000.dtsi"
 #include "tegra234-p3701-0000.dtsi"
