@@ -6,8 +6,8 @@
 /plugin/;
 
 #include "tegra234-overlay.dtsi"
-#include "tegra234-thermal.dtsi"
-#include "tegra234-thermal-shutdown.dtsi"
+#include "tegra234-soc-thermal.dtsi"
+#include "tegra234-soc-thermal-shutdown.dtsi"
 #include "tegra234-audio-dai-links-overlay.dtsi"
 #include "tegra234-camera.dtsi"
 #include "tegra234-status-overlay.dtsi"
