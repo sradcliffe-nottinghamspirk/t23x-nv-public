@@ -2,7 +2,7 @@
 // Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 /*
- * tegra234-camera.dtsi: Camera RTCPU DTSI file.
+ * tegra234-soc-camera.dtsi: Camera RTCPU DTSI file.
  */
 
 
