@@ -1,0 +1,11 @@
+// SPDX-FileCopyrightText: Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+/plugin/;
+
+#include "tegra234-p3767-0000.dtsi"
+
+/ {
+	overlay-name = "Tegra234 P3768-0000+P3767-0000 Overlay";
+};

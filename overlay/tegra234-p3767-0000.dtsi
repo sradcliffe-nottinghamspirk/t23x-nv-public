@@ -1,0 +1,42 @@
+// SPDX-FileCopyrightText: Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: GPL-2.0-only
+
+#include <dt-bindings/gpio/tegra234-gpio.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/interrupt/tegra234-irq.h>
+
+/ {
+	p3767-0000-fragment@0 {
+		target-path = "/";
+
+		__overlay__ {
+			bus@0 {
+				pinmux: tegra_pinctrl: pinmux@2430000 {
+					compatible = "nvidia,tegra234-pinmux";
+					reg = <0x0 0x2430000 0x0 0x19100>,
+						<0x0 0xc300000 0x0 0x4000>;
+					#gpio-range-cells = <3>;
+					status = "okay";
+				};
+				mmc@3400000 {
+					no-sdio;
+					no-mmc;
+					nvidia,cd-wakeup-capable;
+					nvidia,boot-detect-delay = <1000>;
+					cd-gpios = <&gpio TEGRA234_MAIN_GPIO(G, 7) GPIO_ACTIVE_LOW>;
+				};
+			};
+
+			reserved-memory {
+				linux,cma { /* Needed for nvgpu comptags */
+					compatible = "shared-dma-pool";
+					reusable;
+					size = <0x0 0x10000000>; /* 256MB */
+					alignment = <0x0 0x10000>;
+					linux,cma-default;
+					status = "okay";
+				};
+			};
+		};
+	};
+};
