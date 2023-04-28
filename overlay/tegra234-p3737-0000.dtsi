@@ -160,21 +160,6 @@
 				hdr40_snd_link_i2s: nvidia-audio-card,dai-link@77 { };
 			};
 
-			reserved-memory {
-				#address-cells = <2>;
-				#size-cells = <2>;
-				ranges;
-
-				linux,cma { /* Needed for nvgpu comptags */
-					compatible = "shared-dma-pool";
-					reusable;
-					size = <0x0 0x10000000>; /* 256MB */
-					alignment = <0x0 0x10000>;
-					linux,cma-default;
-					status = "okay";
-				};
-			};
-
 			eeprom-manager {
 				data-size = <0x100>;
 				bus@0 {
