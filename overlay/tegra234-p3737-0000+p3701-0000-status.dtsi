@@ -7,6 +7,10 @@
 	fragment-t234-soc@0 {
 		__overlay__ {
 			bus@0 {
+				actmon@d230000 {
+					status = "okay";
+				};
+
 				watchdog@2190000 {
 					status = "okay";
 				};
