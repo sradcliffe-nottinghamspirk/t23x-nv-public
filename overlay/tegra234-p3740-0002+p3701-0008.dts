@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+/dts-v1/;
+/plugin/;
+
+#include "tegra234-overlay.dtsi"
+#include "tegra234-soc-thermal.dtsi"
+#include "tegra234-soc-thermal-shutdown.dtsi"
+#include "tegra234-p3740-0002+p3701-0008-status.dtsi"
+#include "tegra234-p3740-0002.dtsi"
+#include "tegra234-p3701-0008.dtsi"
+#include "tegra234-dcb-p3737-0000-p3701-0000.dtsi"
+
+/ {
+	compatible = "nvidia,p3740-0002+p3701-0008";
+};

@@ -1,0 +1,79 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+// This files contans the status override of the DT nodes for overlay files.
+
+/ {
+	fragment-t234-soc@0 {
+		__overlay__ {
+			bus@0 {
+				mttcan@c310000 {
+					status = "okay";
+				};
+
+				mttcan@c320000 {
+					status = "okay";
+				};
+
+				serial@3110000 {
+					status = "okay";
+				};
+
+				tachometer@39c0000 {
+					status = "okay";
+				};
+
+				watchdog@2190000 {
+					status = "okay";
+				};
+			};
+
+			soctherm-oc-event {
+				status = "okay";
+			};
+		};
+	};
+
+	fragment-t234-thermal@0 {
+		target-path = "/";
+		__overlay__ {
+			thermal-zones {
+				cpu-thermal {
+					status = "okay";
+				};
+
+				cv0-thermal {
+					status = "okay";
+				};
+
+				cv1-thermal {
+					status = "okay";
+				};
+
+				cv2-thermal {
+					status = "okay";
+				};
+
+				gpu-thermal {
+					status = "okay";
+				};
+
+				soc0-thermal {
+					status = "okay";
+				};
+
+				soc1-thermal {
+					status = "okay";
+				};
+
+				soc2-thermal {
+					status = "okay";
+				};
+
+				tj-thermal {
+					status = "okay";
+				};
+			};
+		};
+	};
+};
