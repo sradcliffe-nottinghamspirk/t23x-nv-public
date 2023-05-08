@@ -67,6 +67,10 @@
 					status = "okay";
 				};
 
+				hwpm@f100000 {
+					status = "okay";
+				};
+
 				host1x@13e00000 {
 					nvjpg@15380000 {
 						status = "okay";
@@ -97,10 +101,6 @@
 					};
 
 					tsec@15500000 {
-						status = "okay";
-					};
-
-					tegra_soc_hwpm {
 						status = "okay";
 					};
 
