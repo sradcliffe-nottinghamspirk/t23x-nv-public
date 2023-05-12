@@ -4,8 +4,97 @@
 /dts-v1/;
 /plugin/;
 
+#include "tegra234-overlay.dtsi"
+#include "tegra234-soc-thermal.dtsi"
+#include "tegra234-soc-thermal-shutdown.dtsi"
 #include "tegra234-p3767-0000.dtsi"
 
 / {
 	overlay-name = "Tegra234 P3768-0000+P3767-0000 Overlay";
+
+	fragment-t234-p3768-p3767@0 {
+		target-path = "/";
+		__overlay__ {
+			bus@0 {
+				watchdog@2190000 {
+					status = "okay";
+				};
+
+				pinmux@2430000 {
+					status = "okay";
+				};
+
+				hsp@3d00000 {
+					status = "okay";
+				};
+
+				aon@c000000 {
+					status = "okay";
+				};
+
+				host1x@13e00000 {
+					tegra_soc_hwpm {
+						status = "okay";
+					};
+
+					nvdla0@15880000 {
+						status = "okay";
+					};
+
+					nvdla1@158c0000 {
+						status = "okay";
+					};
+
+					pva0@16000000 {
+						status = "okay";
+
+						pva0_niso1_ctx0 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx1 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx2 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx3 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx4 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx5 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx6 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx7 {
+							status = "okay";
+						};
+					};
+
+				};
+			};
+
+			nvpmodel {
+				status = "okay";
+			};
+		};
+	};
 };
+
+/*
+ * Include this file last in the device tree.  It manages run-time
+ * pruning of peripherals that are not available across the various
+ * SKUs of p3767.  For example PVA can be enabled in the device tree
+ * and it will automatically be disabled for SKUs without PVA support.
+ */
+#include "tegra234-p3767-sku-handling.dtsi"

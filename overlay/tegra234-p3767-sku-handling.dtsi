@@ -1,13 +1,8 @@
 // SPDX-FileCopyrightText: Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 // SPDX-License-Identifier: GPL-2.0-only
 
-/dts-v1/;
-/plugin/;
-
 / {
-	overlay-name = "Tegra234 P3767 Overlay";
-
-	p3767-overlay-fragment@0 {
+	p3767-sku-handling-fragment@0 {
 		target-path = "/bus@0/host1x@13e00000";
 		board_config {
 			fuse-info = "fuse-disable-nvenc";
@@ -19,7 +14,7 @@
 		};
 	};
 
-	p3767-overlay-fragment@1 {
+	p3767-sku-handling-fragment@1 {
 		target-path = "/bus@0/host1x@13e00000";
 		board_config {
 			fuse-info = "fuse-disable-pva";
@@ -31,7 +26,7 @@
 		};
 	};
 
-	p3767-overlay-fragment@2 {
+	p3767-sku-handling-fragment@2 {
 		target-path = "/bus@0/host1x@13e00000";
 		board_config {
 			fuse-info = "fuse-disable-dla0";
@@ -43,7 +38,7 @@
 		};
 	};
 
-	p3767-overlay-fragment@3 {
+	p3767-sku-handling-fragment@3 {
 		target-path = "/bus@0/host1x@13e00000";
 		board_config {
 			fuse-info = "fuse-disable-dla1";
@@ -54,5 +49,4 @@
 			};
 		};
 	};
-
 };

@@ -11,13 +11,6 @@
 
 		__overlay__ {
 			bus@0 {
-				pinmux: tegra_pinctrl: pinmux@2430000 {
-					compatible = "nvidia,tegra234-pinmux";
-					reg = <0x0 0x2430000 0x0 0x19100>,
-						<0x0 0xc300000 0x0 0x4000>;
-					#gpio-range-cells = <3>;
-					status = "okay";
-				};
 				mmc@3400000 {
 					no-sdio;
 					no-mmc;
