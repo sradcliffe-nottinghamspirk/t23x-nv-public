@@ -309,6 +309,14 @@
 					status = "okay";
 				};
 			};
+
+			dce@d800000 {
+				status = "okay";
+			};
+
+			display@13800000 {
+				status = "okay";
+			};
 		};
 	};
 

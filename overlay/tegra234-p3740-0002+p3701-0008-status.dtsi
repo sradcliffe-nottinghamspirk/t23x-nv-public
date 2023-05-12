@@ -188,4 +188,16 @@
 			};
 		};
 	};
+
+	fragment-t234-display@0 {
+		__overlay__ {
+			dce@d800000 {
+				status = "okay";
+			};
+
+			display@13800000 {
+				status = "okay";
+			};
+		};
+	};
 };

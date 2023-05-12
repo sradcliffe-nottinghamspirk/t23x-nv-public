@@ -17,7 +17,7 @@
 				interrupt-names = "wdt-remote",
 					"dce-sm0";
 				iommus = <&smmu_niso0 TEGRA234_SID_DCE>;
-				status = "okay";
+				status = "disabled";
 			};
 
 			display@13800000 {
@@ -166,7 +166,7 @@
 					"dpaux0_reset",
 					"dsi_core_reset",
 					"mipi_cal_reset";
-				status = "okay";
+				status = "disabled";
 				nvidia,disp-sw-soc-chip-id = <0x2350>;
 #if TEGRA_IOMMU_DT_VERSION >= DT_VERSION_2
 				interconnects = <&mc TEGRA234_MEMORY_CLIENT_NVDISPLAYR>,
