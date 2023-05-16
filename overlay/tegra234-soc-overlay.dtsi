@@ -279,7 +279,7 @@
 					};
 				};
 
-				tegra_soc_hwpm {
+				hwpm@f100000 {
 					compatible = "nvidia,t234-soc-hwpm";
 					dma-coherent;
 					reg = <0x0 0xf100000 0x0 0x1000>,

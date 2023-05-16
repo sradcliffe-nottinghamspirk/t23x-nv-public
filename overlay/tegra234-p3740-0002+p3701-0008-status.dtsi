@@ -7,11 +7,106 @@
 	fragment-t234-soc@0 {
 		__overlay__ {
 			bus@0 {
+				host1x@13e00000 {
+					nvdla0@15880000 {
+						status = "okay";
+					};
+
+					nvdla1@158c0000 {
+						status = "okay";
+					};
+
+					nvenc@154c0000 {
+						status = "okay";
+					};
+
+					nvjpg@15380000 {
+						status = "okay";
+					};
+
+					nvjpg@15540000 {
+						status = "okay";
+					};
+
+					ofa@15a50000 {
+						status = "okay";
+					};
+
+					pva0@16000000 {
+						status = "okay";
+
+						pva0_niso1_ctx0 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx1 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx2 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx3 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx4 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx5 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx6 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx7 {
+							status = "okay";
+						};
+					};
+
+					se@15810000 {
+						status = "okay";
+					};
+
+					se@15820000 {
+						status = "okay";
+					};
+
+					se@15840000 {
+						status = "okay";
+					};
+
+					tsec@15500000 {
+						status = "okay";
+					};
+
+				};
+
+				hsp@3c00000 {
+					status = "okay";
+				};
+
+				hsp@c150000 {
+					status = "okay";
+				};
+
+				hwpm@f100000 {
+					status = "okay";
+				};
+
 				mttcan@c310000 {
 					status = "okay";
 				};
 
 				mttcan@c320000 {
+					status = "okay";
+				};
+
+				pinmux@2430000 {
 					status = "okay";
 				};
 
@@ -31,6 +126,11 @@
 			soctherm-oc-event {
 				status = "okay";
 			};
+
+			tegra-hsp@b950000 {
+				status = "okay";
+			};
+
 		};
 	};
 
@@ -72,6 +172,18 @@
 
 				tj-thermal {
 					status = "okay";
+				};
+			};
+		};
+	};
+
+	fragment-t234-base@0 {
+		__overlay__ {
+			cpus {
+				idle-states {
+					c7 {
+						status = "okay";
+					};
 				};
 			};
 		};
