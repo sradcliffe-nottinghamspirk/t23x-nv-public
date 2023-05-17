@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: GPL-2.0
-// Copyright (c) 2015-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: GPL-2.0-only
+// Copyright (c) 2015-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include "tegra234-camera-e3333-a00.dtsi"
 #include <dt-bindings/gpio/tegra234-gpio.h>

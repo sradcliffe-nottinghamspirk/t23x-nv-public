@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 // Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
-// This files contans the status override of the DT nodes for overlay files.
+// This files contains the status override of the DT nodes for overlay files.
 
 / {
 	fragment-t234-soc@0 {
