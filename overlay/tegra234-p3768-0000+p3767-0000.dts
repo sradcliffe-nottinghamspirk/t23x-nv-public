@@ -24,6 +24,32 @@
 					status = "okay";
 				};
 
+				/* PWM1, 40pin header, pin 15 */
+				pwm@3280000 {
+					status = "okay";
+				};
+
+				/* PWM3, FAN */
+				pwm@32a0000 {
+					status = "okay";
+				};
+
+				/* PWM5, 40pin header, pin 33 */
+				pwm@32c0000 {
+					status = "okay";
+				};
+
+				/* PWM7, 40pin header, pin 32 */
+				pwm@32e0000 {
+					status = "okay";
+				};
+
+				tachometer@39c0000 {
+					status = "okay";
+					upper-threshold = <0xfffff>;
+					lower-threshold = <0x0>;
+				};
+
 				hsp@3d00000 {
 					status = "okay";
 				};
