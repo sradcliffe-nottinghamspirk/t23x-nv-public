@@ -20,6 +20,10 @@
 				};
 			};
 
+			chosen {
+				nvidia,tegra-joint_xpu_rail;
+			};
+
 			reserved-memory {
 				linux,cma { /* Needed for nvgpu comptags */
 					compatible = "shared-dma-pool";
