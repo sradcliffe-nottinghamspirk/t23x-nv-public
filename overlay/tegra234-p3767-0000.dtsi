@@ -18,6 +18,10 @@
 					nvidia,boot-detect-delay = <1000>;
 					cd-gpios = <&gpio TEGRA234_MAIN_GPIO(G, 7) GPIO_ACTIVE_LOW>;
 				};
+
+				gpu@17000000 {
+					status = "okay";
+				};
 			};
 
 			chosen {
