@@ -137,6 +137,12 @@
 	fragment-t234-thermal@0 {
 		target-path = "/";
 		__overlay__ {
+			bpmp {
+				thermal {
+					status = "okay";
+				};
+			};
+
 			thermal-zones {
 				cpu-thermal {
 					status = "okay";
