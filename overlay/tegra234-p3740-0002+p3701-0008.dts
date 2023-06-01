@@ -7,11 +7,199 @@
 #include "tegra234-overlay.dtsi"
 #include "tegra234-soc-thermal.dtsi"
 #include "tegra234-soc-thermal-shutdown.dtsi"
-#include "tegra234-p3740-0002+p3701-0008-status.dtsi"
 #include "tegra234-p3740-0002.dtsi"
 #include "tegra234-p3701-0008.dtsi"
 #include "tegra234-dcb-p3737-0000-p3701-0000.dtsi"
 
 / {
 	compatible = "nvidia,p3740-0002+p3701-0008";
+
+	fragment-t234-p3740-p3701@0 {
+		target-path = "/";
+		__overlay__ {
+			bpmp {
+				thermal {
+					status = "okay";
+				};
+			};
+
+			cpus {
+				idle-states {
+					c7 {
+						status = "okay";
+					};
+				};
+			};
+
+			soctherm-oc-event {
+				status = "okay";
+			};
+
+			thermal-zones {
+				cpu-thermal {
+					status = "okay";
+				};
+
+				cv0-thermal {
+					status = "okay";
+				};
+
+				cv1-thermal {
+					status = "okay";
+				};
+
+				cv2-thermal {
+					status = "okay";
+				};
+
+				gpu-thermal {
+					status = "okay";
+				};
+
+				soc0-thermal {
+					status = "okay";
+				};
+
+				soc1-thermal {
+					status = "okay";
+				};
+
+				soc2-thermal {
+					status = "okay";
+				};
+
+				tj-thermal {
+					status = "okay";
+				};
+			};
+
+			bus@0 {
+				watchdog@2190000 {
+					status = "okay";
+				};
+
+				pinmux@2430000 {
+					status = "okay";
+				};
+
+				serial@3110000 {
+					status = "okay";
+				};
+
+				tachometer@39c0000 {
+					status = "okay";
+				};
+
+				hsp@3c00000 {
+					status = "okay";
+				};
+
+				hsp@c150000 {
+					status = "okay";
+				};
+
+				mttcan@c310000 {
+					status = "okay";
+				};
+
+				mttcan@c320000 {
+					status = "okay";
+				};
+
+				hwpm@f100000 {
+					status = "okay";
+				};
+
+				host1x@13e00000 {
+					nvjpg@15380000 {
+						status = "okay";
+					};
+
+					nvenc@154c0000 {
+						status = "okay";
+					};
+
+					tsec@15500000 {
+						status = "okay";
+					};
+
+					nvjpg@15540000 {
+						status = "okay";
+					};
+
+					se@15810000 {
+						status = "okay";
+					};
+
+					se@15820000 {
+						status = "okay";
+					};
+
+					se@15840000 {
+						status = "okay";
+					};
+
+					nvdla0@15880000 {
+						status = "okay";
+					};
+
+					nvdla1@158c0000 {
+						status = "okay";
+					};
+
+					ofa@15a50000 {
+						status = "okay";
+					};
+
+					pva0@16000000 {
+						status = "okay";
+
+						pva0_niso1_ctx0 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx1 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx2 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx3 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx4 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx5 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx6 {
+							status = "okay";
+						};
+
+						pva0_niso1_ctx7 {
+							status = "okay";
+						};
+					};
+				};
+			};
+
+			tegra-hsp@b950000 {
+				status = "okay";
+			};
+
+			dce@d800000 {
+				status = "okay";
+			};
+
+			display@13800000 {
+				status = "okay";
+			};
+		};
+	};
 };
