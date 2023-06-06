@@ -35,6 +35,7 @@
 			aliases {
 				serial0 = "/bus@0/serial@3100000";
 				serial1 = "/bus@0/serial@3110000";
+				serial2 = "/bus@0/serial@3140000";
 				i2c0 = "/bus@0/i2c@3160000";
 				i2c1 = "/bus@0/i2c@c240000";
 				i2c2 = "/bus@0/i2c@3180000";
