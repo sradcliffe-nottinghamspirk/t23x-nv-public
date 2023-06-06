@@ -121,6 +121,10 @@
 					status = "okay";
 				};
 
+				mttcan@c310000 {
+					status = "okay";
+				};
+
 				host1x@13e00000 {
 					tegra_soc_hwpm {
 						status = "okay";
