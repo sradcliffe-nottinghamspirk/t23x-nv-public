@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 //
 // This file contains the DT nodes of T234 which are not in base/tegra234.dtsi
 
@@ -19,6 +19,11 @@
 	fragment-t234-soc@0 {
 		target-path = "/";
 		 __overlay__ {
+			aliases {
+				nvdla0 = "/bus@0/host1x@13e00000/nvdla0@15880000";
+				nvdla1 = "/bus@0/host1x@13e00000/nvdla1@158c0000";
+			};
+
 			chosen {
 				framebuffer {
 					compatible = "simple-framebuffer";
