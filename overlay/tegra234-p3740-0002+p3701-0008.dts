@@ -79,11 +79,21 @@
 			};
 
 			bus@0 {
+				smmu_test {
+					compatible = "nvidia,smmu_test";
+					iommus = <&smmu_niso0 TEGRA234_SID_SMMU_TEST>;
+					status = "okay";
+				};
+
 				pinmux@2430000 {
 					status = "okay";
 				};
 
 				serial@3110000 {
+					status = "okay";
+				};
+
+				serial@31d0000 {
 					status = "okay";
 				};
 
@@ -104,6 +114,10 @@
 				};
 
 				mttcan@c320000 {
+					status = "okay";
+				};
+
+				actmon@d230000 {
 					status = "okay";
 				};
 
@@ -199,6 +213,10 @@
 			};
 
 			dce@d800000 {
+				status = "okay";
+			};
+
+			tegra_mce@e100000 {
 				status = "okay";
 			};
 
