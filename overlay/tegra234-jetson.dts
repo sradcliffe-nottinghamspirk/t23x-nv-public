@@ -292,6 +292,14 @@
 	fragment@2 {
 		target-path = "/";
 		__overlay__ {
+			nvpmodel {
+				compatible = "nvidia,nvpmodel";
+				nvidia,bpmp = <&bpmp>;
+				clocks = <&bpmp TEGRA234_CLK_EMC>;
+				clock-names = "emc";
+				status = "okay";
+			};
+
 			reserved-memory {
 				#address-cells = <2>;
 				#size-cells = <2>;
