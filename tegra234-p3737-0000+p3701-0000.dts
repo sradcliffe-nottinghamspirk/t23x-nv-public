@@ -2283,11 +2283,7 @@
 	};
 
 	pwm-fan {
-		compatible = "pwm-fan";
-		pwms = <&pwm3 0 45334>;
-
-		cooling-levels = <0 95 178 255>;
-		#cooling-cells = <2>;
+		cooling-levels = <66 215 255>;
 	};
 
 	serial {
@@ -2356,4 +2352,20 @@
 
 		label = "NVIDIA Jetson AGX Orin APE";
 	};
+
+	thermal-zones {
+                tj-thermal {
+                        cooling-maps {
+                                map-active-0 {
+                                        cooling-device = <&fan 0 1>;
+                                        trip = <&tj_trip_active0>;
+                                };
+
+                                map-active-1 {
+                                        cooling-device = <&fan 1 2>;
+                                        trip = <&tj_trip_active1>;
+                                };
+                        };
+                };
+        };
 };
