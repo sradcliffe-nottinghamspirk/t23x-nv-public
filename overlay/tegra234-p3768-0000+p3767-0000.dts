@@ -207,12 +207,6 @@
 				status = "okay";
 			};
 
-			bpmp {
-				thermal {
-					status = "okay";
-				};
-			};
-
 			thermal-zones {
 				cpu-thermal {
 					status = "okay";
@@ -243,10 +237,6 @@
 				};
 
 				soc2-thermal {
-					status = "okay";
-				};
-
-				tj-thermal {
 					status = "okay";
 				};
 			};
