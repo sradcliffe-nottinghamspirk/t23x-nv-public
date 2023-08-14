@@ -9,6 +9,7 @@
 #include "tegra234-soc-thermal-slowdown-corepair.dtsi"
 #include "tegra234-soc-thermal-shutdown.dtsi"
 #include "tegra234-p3767-0000.dtsi"
+#include "tegra234-soc-camera.dtsi"
 #include "tegra234-dcb-p3737-0000-p3701-0000.dtsi"
 
 / {
@@ -31,6 +32,10 @@
 				/* UARTE, M2.E connector */
 				serial@3140000 {
 					compatible = "nvidia,tegra194-hsuart";
+					status = "okay";
+				};
+
+				i2c@3180000 {
 					status = "okay";
 				};
 
@@ -274,6 +279,17 @@
 						};
 					};
 
+					nvjpg@15380000 {
+						status = "okay";
+					};
+
+					nvjpg1@15540000 {
+						status = "okay";
+					};
+
+					nvjpg@15540000 {
+						status = "okay";
+					};
 				};
 			};
 
@@ -324,6 +340,10 @@
 			};
 
 			display@13800000 {
+				status = "okay";
+			};
+
+			tegra-hsp@b950000 {
 				status = "okay";
 			};
 		};
