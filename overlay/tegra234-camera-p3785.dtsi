@@ -4,7 +4,6 @@
 #include <dt-bindings/clock/tegra234-clock.h>
 
 #define CAM0_PWDN	TEGRA234_AON_GPIO(AA, 4)
-#define CAMERA_I2C_MUX_BUS(x) (0x1E + x)
 
 / {
 	fragment-camera@0 {
@@ -395,10 +394,8 @@
 						drivernode0 {
 							/* Declare PCL support driver (classically known as guid)  */
 							pcl_id = "v4l2_sensor";
-							/* Driver v4l2 device name */
-							devname = "p3785 2-0056";
 							/* Declare the device-tree hierarchy to driver instance */
-							proc-device-tree = "/proc/device-tree/bus@0/i2c@3180000/p3785@56";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/p3785@56";
 						};
 					};
 				};
