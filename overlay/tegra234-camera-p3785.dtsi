@@ -104,8 +104,6 @@
 						clock-names = "extperiph1", "pllp_grtba";
 						mclk = "extperiph1";
 						reset-gpios = <&gpio_aon CAM0_PWDN GPIO_ACTIVE_HIGH>;
-						vana-supply = <&p3740_vdd_3v3_sys>;
-						vdig-supply = <&p3740_vdd_3v3_sys>;
 
 						/**
 						* ==== Modes ====
