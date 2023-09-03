@@ -15,7 +15,8 @@
 				fb0_reserved: framebuffer@0,0 {
 					compatible = "framebuffer";
 					reg = <0x00 0x00 0x00 0x00>;
-					iommu-addresses = <&dc0 0x0 0x0 0x0 0x0>;
+					iommu-addresses = <&display 0x0 0x0 0x0 0x0>;
+					no-map;
 					status = "disabled";
 				};
 			};
@@ -32,7 +33,7 @@
 				status = "disabled";
 			};
 
-			dc0: display@13800000 {
+			display: display@13800000 {
 				compatible = "nvidia,tegra234-display";
 				power-domains = <&bpmp TEGRA234_POWER_DOMAIN_DISP>;
 				nvidia,num-dpaux-instance = <1>;
@@ -179,6 +180,7 @@
 					"dsi_core_reset",
 					"mipi_cal_reset";
 				status = "disabled";
+				memory-region = <&fb0_reserved>;
 				nvidia,disp-sw-soc-chip-id = <0x2350>;
 #if TEGRA_IOMMU_DT_VERSION >= DT_VERSION_2
 				interconnects = <&mc TEGRA234_MEMORY_CLIENT_NVDISPLAYR &emc>,
