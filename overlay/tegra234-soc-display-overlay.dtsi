@@ -4,9 +4,11 @@
 #include <dt-bindings/power/tegra234-powergate.h>
 
 / {
+#ifndef REMOVE_FRAGMENT_SYNTAX
 	fragment-t234-display@0 {
 		target-path = "/";
 		__overlay__ {
+#endif
 			reserved-memory {
 				#address-cells = <2>;
 				#size-cells = <2>;
@@ -195,6 +197,8 @@
 					dma-coherent;
 				};
 			};
+#ifndef REMOVE_FRAGMENT_SYNTAX
 		};
 	};
+#endif
 };

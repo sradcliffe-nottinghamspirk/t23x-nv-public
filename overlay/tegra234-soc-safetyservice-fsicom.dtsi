@@ -5,9 +5,11 @@
 #include <dt-bindings/memory/tegra234-mc.h>
 
 / {
+#ifndef REMOVE_FRAGMENT_SYNTAX
 	fragment-fsicom@0 {
 		target-path = "/";
 		__overlay__ {
+#endif
 			reserved-memory {
 				fsicom_resv: reservation-fsicom {
 					iommu-addresses = <&fsiccplex_com 0x0 0x0 0x0 0xf0000000>,
@@ -105,6 +107,8 @@
 				status = "disabled";
 				channelid_list = <0>;
 			};
+#ifndef REMOVE_FRAGMENT_SYNTAX
 		};
 	};
+#endif
 };
