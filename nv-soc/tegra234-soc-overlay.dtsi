@@ -96,6 +96,11 @@
 		};
 	};
 
+	firmware {
+		uefi {
+		};
+	};
+
 	bus@0 {
 		actmon@d230000 {
 			compatible = "nvidia,tegra234-cactmon-mc-all";
