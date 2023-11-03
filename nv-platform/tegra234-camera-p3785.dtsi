@@ -68,10 +68,10 @@
 		};
 
 		i2c@3180000 {
-			p3785@56 {
+			p3785@2b {
 				compatible = "nvidia,lt6911uxc";
 				/* I2C device address */
-				reg = <0x56>;
+				reg = <0x2b>;
 
 				/* V4L2 device node location */
 				devnode = "video0";
@@ -392,7 +392,7 @@
 					/* Declare PCL support driver (classically known as guid)  */
 					pcl_id = "v4l2_sensor";
 					/* Declare the device-tree hierarchy to driver instance */
-					sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/p3785@56";
+					sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/p3785@2b";
 				};
 			};
 		};
