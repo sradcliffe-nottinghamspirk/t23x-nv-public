@@ -6,7 +6,6 @@
 
 #include <dt-bindings/gpio/tegra234-gpio.h>
 #include <dt-bindings/interrupt-controller/irq.h>
-#include "tegra234-p3737-0000-camera-imx274-dual.dtsi"
 #include "tegra234-p3737-camera-modules.dtsi"
 
 / {
