@@ -32,6 +32,7 @@ dtbo-y += tegra234-p3737-0000+p3701-0000-m2ke.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-sph0645lm4h.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-uda1334a.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-fe-pi.dtbo
+dtbo-y += tegra234-p3767-0000+p3509-a02-audio-wm8904.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-respeaker-4-mic-array.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-respeaker-4-mic-lin-array.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-csi.dtbo
