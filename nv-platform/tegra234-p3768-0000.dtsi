@@ -28,8 +28,6 @@
 		clock-names = "pll_a", "plla_out0", "extern1";
 		assigned-clocks = <&bpmp TEGRA234_CLK_AUD_MCLK>;
 		assigned-clock-parents = <&bpmp TEGRA234_CLK_PLLA_OUT0>;
-		assigned-clock-rates = <12000000>;
-//		nvidia-audio-card,mclk-fs = <0>;
 
 		nvidia-audio-card,name = "NVIDIA Jetson Orin NX APE";
 
