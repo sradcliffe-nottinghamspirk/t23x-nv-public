@@ -10,3 +10,4 @@
 
 #include <dt-bindings/tegra234-p3767-0000-common.h>
 #include <overlay/jetson-audio-wm8904.dtsi>
+#include <overlay/jetson-display-1440x1600.dtsi>
