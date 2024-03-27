@@ -32,7 +32,6 @@ dtbo-y += tegra234-p3737-0000+p3701-0000-m2ke.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-sph0645lm4h.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-uda1334a.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-fe-pi.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-audio-wm8904.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-respeaker-4-mic-array.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-respeaker-4-mic-lin-array.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-csi.dtbo
@@ -55,7 +54,7 @@ dtbo-y += tegra234-p3737-camera-dual-hawk-ar0234-e3653-overlay.dtbo
 dtbo-y += tegra234-p3737-camera-imx390-overlay.dtbo
 dtbo-y += tegra234-p3737-camera-p3762-a00-overlay.dtbo
 dtbo-y += tegra234-p3740-camera-p3783-a00-overlay.dtbo
-
+dtbo-y += otodx-custom.dtbo
 
 ifneq ($(dtb-y),)
 dtb-y := $(addprefix $(makefile-path)/,$(dtb-y))
